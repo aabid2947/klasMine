@@ -127,7 +127,7 @@ export default function MyProfile() {
       setLoading(true);
 
       // Step 1: upload image
-      const res = await uploadProfileImage(selected, user);
+      const res = await uploadProfileImage(selected);
       
       // Check if redirect is true - session expired
       if (res?.redirect === true) {
