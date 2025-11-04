@@ -2,7 +2,7 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { User } from "../store/useAuthStore";
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL; // keep base url in .env
+const PROXY_URL = "/api/proxy"; // Use Next.js proxy
 
 // Get token/session_id from localStorage (safe check for server-side)
 const getAuthHeaders = () => {
@@ -18,7 +18,7 @@ const getAuthHeaders = () => {
   return {};
 };
 
-// Generic request with axios
+// Generic request with axios through Next.js proxy
 const request = async (
   method: AxiosRequestConfig["method"],
   endpoint: string,
@@ -26,15 +26,18 @@ const request = async (
   withToken: boolean = false
 ) => {
   try {
-    const headers: Record<string, string> = {};
+    const headers: Record<string, string> = {
+      "Content-Type": "application/json",
+    };
 
     if (withToken) {
       Object.assign(headers, getAuthHeaders());
     }
 
+    // Call proxy with endpoint as query param
     const res = await axios({
       method,
-      url: `${BASE_URL}${endpoint}`,
+      url: `${PROXY_URL}?endpoint=${encodeURIComponent(endpoint)}`,
       data: body,
       headers,
     });
@@ -62,23 +65,14 @@ export const deleteRequest = (endpoint: string, withToken = false) =>
   request("DELETE", endpoint, null, withToken);
 
 // Profile upload API
-export async function uploadProfileImage(file: File, user: User) {
+export const uploadProfileImage = async (imageFile: File) => {
   const formData = new FormData();
-  formData.append("device", "android");
-  formData.append("app_version", "1.0.5");
-  formData.append("sess_id", user.sess_id);
-  formData.append("user_id", user.user_id);
-  formData.append("file", file);
+  formData.append('image', imageFile);
 
-  const res = await axios.post(
-    `${BASE_URL}/account/upload-profile-image`,
-    formData,
-    {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    }
+  const response = await axios.post(
+    `/api/proxy-upload?endpoint=${encodeURIComponent('/account/upload')}`,
+    formData
   );
 
-  return res.data; // should include the uploaded image URL
-}
+  return response.data;
+};
