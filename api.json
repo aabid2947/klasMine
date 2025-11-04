@@ -1,0 +1,1069 @@
+{
+	"info": {
+		"_postman_id": "430723d2-6f38-4d63-a698-33a5b245d763",
+		"name": "AI-Image",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25967909",
+		"_collection_link": "https://blue-crescent-405121.postman.co/workspace/Team-Workspace~893a96ac-a484-4ba1-8ad0-1474f8c2e77c/collection/25967909-430723d2-6f38-4d63-a698-33a5b245d763?action=share&source=collection_link&creator=25967909"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"device\": \"android\",\r\n    \"app_version\": \"1.0.5\",\r\n    \"latitude\": \"28.6139\",\r\n    \"longitude\": \"77.2090\",\r\n    \"email\": \"shiva10@gmail.com\",\r\n    \"password\": \"123456\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://klassart.com/web/rest/api/account/login-validate",
+					"protocol": "https",
+					"host": [
+						"klassart",
+						"com"
+					],
+					"path": [
+						"web",
+						"rest",
+						"api",
+						"account",
+						"login-validate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dashboard",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"device\": \"android\",\r\n    \"app_version\": \"1.0.5\",\r\n    \"latitude\": \"28.6139\",\r\n    \"longitude\": \"77.2090\",\r\n    \"user_id\": \"11\",\r\n    \"sess_id\": \"bc33ea4e26e5e1af1408321416956113a4658763\",\r\n    \"page\": \"1\",\r\n    \"query\" : \"\",\r\n    \"orientation_ids\" : [],\r\n    \"sub_category_id\" : \"\",\r\n    \"article_category_id\" : \"\",\r\n    \"price\" : \"\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://klassart.com/web/rest/api/dashboard",
+					"protocol": "https",
+					"host": [
+						"klassart",
+						"com"
+					],
+					"path": [
+						"web",
+						"rest",
+						"api",
+						"dashboard"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Notifications",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"device\": \"android\",\r\n    \"app_version\": \"1.0.5\",\r\n    \"latitude\": \"28.6139\",\r\n    \"longitude\": \"77.2090\",\r\n    \"user_id\": \"12\",\r\n    \"sess_id\": \"b6692ea5df920cad691c20319a6fffd7a4a766b8\",\r\n    \"page\": \"1\",\r\n    \"query\" : \"\",\r\n    \"orientation_ids\" : [],\r\n    \"sub_category_id\" : \"\",\r\n    \"article_category_id\" : \"\",\r\n    \"price\" : \"\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://klassart.com/web/rest/api/notification",
+					"protocol": "https",
+					"host": [
+						"klassart",
+						"com"
+					],
+					"path": [
+						"web",
+						"rest",
+						"api",
+						"notification"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"device\": \"android\",\r\n    \"app_version\": \"1.0.5\",\r\n    \"latitude\": \"28.6139\",\r\n    \"longitude\": \"77.2090\",\r\n    \"name\": \"John Doe\",\r\n    \"email\": \"shiva10@gmail.com\",\r\n    \"password\": \"123456\",\r\n    \"confirm_password\": \"123456\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://klassart.com/web/rest/api/account/register",
+					"protocol": "https",
+					"host": [
+						"klassart",
+						"com"
+					],
+					"path": [
+						"web",
+						"rest",
+						"api",
+						"account",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send OTP",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"device\": \"android\",\r\n    \"app_version\": \"1.0.5\",\r\n    \"latitude\": \"28.6139\",\r\n    \"longitude\": \"77.2090\",\r\n    \"email\": \"shiva10@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://klassart.com/web/rest/api/account/send-otp",
+					"protocol": "https",
+					"host": [
+						"klassart",
+						"com"
+					],
+					"path": [
+						"web",
+						"rest",
+						"api",
+						"account",
+						"send-otp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate OTP",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"device\": \"android\",\r\n    \"app_version\": \"1.0.5\",\r\n    \"latitude\": \"28.6139\",\r\n    \"longitude\": \"77.2090\",\r\n    \"email\": \"shiva111@gmail.com\",\r\n    \"otp\": \"101010\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://klassart.com/web/rest/api/account/verify-otp",
+					"protocol": "https",
+					"host": [
+						"klassart",
+						"com"
+					],
+					"path": [
+						"web",
+						"rest",
+						"api",
+						"account",
+						"verify-otp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Start Billing First Time",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"device\": \"android\",\r\n    \"app_version\": \"1.0.5\",\r\n    \"latitude\": \"28.6139\",\r\n    \"longitude\": \"77.2090\",\r\n    \"user_id\": \"6\",\r\n    \"sess_id\": \"77de68daecd823babbb58edb1c8e14d7106e83bb\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://klassart.com/web/rest/api/billing/start-billing",
+					"protocol": "https",
+					"host": [
+						"klassart",
+						"com"
+					],
+					"path": [
+						"web",
+						"rest",
+						"api",
+						"billing",
+						"start-billing"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Start Billing First Time Save",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"device\": \"android\",\r\n    \"app_version\": \"1.0.5\",\r\n    \"latitude\": \"28.6139\",\r\n    \"longitude\": \"77.2090\",\r\n    \"user_id\": \"6\",\r\n    \"sess_id\": \"77de68daecd823babbb58edb1c8e14d7106e83bb\",\r\n    \"subscription_plan_id\" : \"1\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://klassart.com/web/rest/api/billing/save-start-billing",
+					"protocol": "https",
+					"host": [
+						"klassart",
+						"com"
+					],
+					"path": [
+						"web",
+						"rest",
+						"api",
+						"billing",
+						"save-start-billing"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Information",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"device\": \"android\",\r\n    \"app_version\": \"1.0.5\",\r\n    \"latitude\": \"28.6139\",\r\n    \"longitude\": \"77.2090\",\r\n    \"user_id\": \"6\",\r\n    \"sess_id\": \"77de68daecd823babbb58edb1c8e14d7106e83bb\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://klassart.com/web/rest/api/account/authorized",
+					"protocol": "https",
+					"host": [
+						"klassart",
+						"com"
+					],
+					"path": [
+						"web",
+						"rest",
+						"api",
+						"account",
+						"authorized"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "My Order history",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"device\": \"android\",\r\n    \"app_version\": \"1.0.5\",\r\n    \"latitude\": \"28.6139\",\r\n    \"longitude\": \"77.2090\",\r\n    \"user_id\": \"6\",\r\n    \"sess_id\": \"77de68daecd823babbb58edb1c8e14d7106e83bb\",\r\n    \"page\" : \"1\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://klassart.com/web/rest/api/billing/my-order-history",
+					"protocol": "https",
+					"host": [
+						"klassart",
+						"com"
+					],
+					"path": [
+						"web",
+						"rest",
+						"api",
+						"billing",
+						"my-order-history"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"device\": \"android\",\r\n    \"app_version\": \"1.0.5\",\r\n    \"latitude\": \"28.6139\",\r\n    \"longitude\": \"77.2090\",\r\n    \"user_id\": \"6\",\r\n    \"sess_id\": \"77de68daecd823babbb58edb1c8e14d7106e83bb\",\r\n    \"current_password\" : \"123456\",\r\n    \"new_password\" : \"123456\",\r\n    \"confirm_password\" : \"123456\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://klassart.com/web/rest/api/account/update-forgot-password",
+					"protocol": "https",
+					"host": [
+						"klassart",
+						"com"
+					],
+					"path": [
+						"web",
+						"rest",
+						"api",
+						"account",
+						"update-forgot-password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Address",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"device\": \"android\",\r\n    \"app_version\": \"1.0.5\",\r\n    \"latitude\": \"28.6139\",\r\n    \"longitude\": \"77.2090\",\r\n    \"user_id\": \"6\",\r\n    \"sess_id\": \"77de68daecd823babbb58edb1c8e14d7106e83bb\",\r\n    \"address_line_1\" : \"E-404/G4\",\r\n    \"city\" : \"Gomtinagar\",\r\n    \"zip\" : \"123456\",\r\n    \"state_code\" : \"UP\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://klassart.com/web/rest/api/account/update-address",
+					"protocol": "https",
+					"host": [
+						"klassart",
+						"com"
+					],
+					"path": [
+						"web",
+						"rest",
+						"api",
+						"account",
+						"update-address"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Profile",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"device\": \"android\",\r\n    \"app_version\": \"1.0.5\",\r\n    \"latitude\": \"28.6139\",\r\n    \"longitude\": \"77.2090\",\r\n    \"user_id\": \"6\",\r\n    \"sess_id\": \"77de68daecd823babbb58edb1c8e14d7106e83bb\",\r\n    \"name\" : \"Shiv\",\r\n    \"email\" : \"shiva10@gmail.com\",\r\n    \"phone\" : \"1234567890\",\r\n    \"image\" : \"\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://klassart.com/web/rest/api/account/update-profile",
+					"protocol": "https",
+					"host": [
+						"klassart",
+						"com"
+					],
+					"path": [
+						"web",
+						"rest",
+						"api",
+						"account",
+						"update-profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload Profile Image",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "device",
+							"value": "android",
+							"type": "text"
+						},
+						{
+							"key": "app_version",
+							"value": "1.0.5",
+							"type": "text"
+						},
+						{
+							"key": "sess_id",
+							"value": "b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f",
+							"type": "text"
+						},
+						{
+							"key": "user_id",
+							"value": "11",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/admin/Downloads/pay-you.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://klassart.com/web/rest/api/account/upload-profile-image",
+					"protocol": "https",
+					"host": [
+						"klassart",
+						"com"
+					],
+					"path": [
+						"web",
+						"rest",
+						"api",
+						"account",
+						"upload-profile-image"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "My Plan",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"device\": \"android\",\r\n    \"app_version\": \"1.0.5\",\r\n    \"latitude\": \"28.6139\",\r\n    \"longitude\": \"77.2090\",\r\n    \"user_id\": \"6\",\r\n    \"sess_id\": \"77de68daecd823babbb58edb1c8e14d7106e83bb\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://klassart.com/web/rest/api/billing/my-plan",
+					"protocol": "https",
+					"host": [
+						"klassart",
+						"com"
+					],
+					"path": [
+						"web",
+						"rest",
+						"api",
+						"billing",
+						"my-plan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"device\": \"android\",\r\n    \"app_version\": \"1.0.5\",\r\n    \"latitude\": \"28.6139\",\r\n    \"longitude\": \"77.2090\",\r\n    \"user_id\": \"6\",\r\n    \"sess_id\": \"77de68daecd823babbb58edb1c8e14d7106e83bb\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://klassart.com/web/rest/api/account/logout",
+					"protocol": "https",
+					"host": [
+						"klassart",
+						"com"
+					],
+					"path": [
+						"web",
+						"rest",
+						"api",
+						"account",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Save",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"device\": \"android\",\r\n    \"app_version\": \"1.0.5\",\r\n    \"latitude\": \"28.6139\",\r\n    \"longitude\": \"77.2090\",\r\n    \"user_id\": \"6\",\r\n    \"sess_id\": \"77de68daecd823babbb58edb1c8e14d7106e83bb\",\r\n    \"post_id\": 0,\r\n    \"article_category_id\": \"1\",\r\n    \"sub_category_id\": \"1\",\r\n    \"name\": \"Post 1\",\r\n    \"image\": \"GlobalAdmin_20250904220556.png\",\r\n    \"price\": \"300\",\r\n    \"description\": \"Test\",\r\n    \"orientation_ids\": [1,2]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://klassart.com/web/rest/api/post/save",
+					"protocol": "https",
+					"host": [
+						"klassart",
+						"com"
+					],
+					"path": [
+						"web",
+						"rest",
+						"api",
+						"post",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "My Posts",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"device\": \"android\",\r\n    \"app_version\": \"1.0.5\",\r\n    \"latitude\": \"28.6139\",\r\n    \"longitude\": \"77.2090\",\r\n    \"user_id\": \"6\",\r\n    \"sess_id\": \"77de68daecd823babbb58edb1c8e14d7106e83bb\",\r\n    \"page\": \"1\",\r\n    \"query\" : \"\",\r\n    \"orientation_ids\" : [],\r\n    \"sub_category_id\" : \"\",\r\n    \"article_category_id\" : \"\",\r\n    \"price\" : \"\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://klassart.com/web/rest/api/my-posts",
+					"protocol": "https",
+					"host": [
+						"klassart",
+						"com"
+					],
+					"path": [
+						"web",
+						"rest",
+						"api",
+						"my-posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post List",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"page\": \"1\",\r\n    \"query\" : \"\",\r\n    \"orientation_ids\" : [],\r\n    \"sub_category_id\" : \"\",\r\n    \"article_category_id\" : \"\",\r\n    \"price\" : \"\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://klassart.com/web/rest/api/post/list",
+					"protocol": "https",
+					"host": [
+						"klassart",
+						"com"
+					],
+					"path": [
+						"web",
+						"rest",
+						"api",
+						"post",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Filters List",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"page\": \"1\",\r\n    \"query\" : \"\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://klassart.com/web/rest/api/filters/list",
+					"protocol": "https",
+					"host": [
+						"klassart",
+						"com"
+					],
+					"path": [
+						"web",
+						"rest",
+						"api",
+						"filters",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Form",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"device\": \"android\",\r\n    \"app_version\": \"1.0.5\",\r\n    \"latitude\": \"28.6139\",\r\n    \"longitude\": \"77.2090\",\r\n    \"user_id\": \"6\",\r\n    \"sess_id\": \"77de68daecd823babbb58edb1c8e14d7106e83bb\",\r\n    \"post_id\": 0\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://klassart.com/web/rest/api/post/form",
+					"protocol": "https",
+					"host": [
+						"klassart",
+						"com"
+					],
+					"path": [
+						"web",
+						"rest",
+						"api",
+						"post",
+						"form"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Form Edit",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"device\": \"android\",\r\n    \"app_version\": \"1.0.5\",\r\n    \"latitude\": \"28.6139\",\r\n    \"longitude\": \"77.2090\",\r\n    \"user_id\": \"6\",\r\n    \"sess_id\": \"77de68daecd823babbb58edb1c8e14d7106e83bb\",\r\n    \"post_id\": 2\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://klassart.com/web/rest/api/post/form/edit",
+					"protocol": "https",
+					"host": [
+						"klassart",
+						"com"
+					],
+					"path": [
+						"web",
+						"rest",
+						"api",
+						"post",
+						"form",
+						"edit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post View",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"device\": \"android\",\r\n    \"app_version\": \"1.0.5\",\r\n    \"latitude\": \"28.6139\",\r\n    \"longitude\": \"77.2090\",\r\n    \"user_id\": \"6\",\r\n    \"sess_id\": \"77de68daecd823babbb58edb1c8e14d7106e83bb\",\r\n    \"post_id\": 2\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://klassart.com/web/rest/api/post/view",
+					"protocol": "https",
+					"host": [
+						"klassart",
+						"com"
+					],
+					"path": [
+						"web",
+						"rest",
+						"api",
+						"post",
+						"view"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Delete",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"device\": \"android\",\r\n    \"app_version\": \"1.0.5\",\r\n    \"latitude\": \"28.6139\",\r\n    \"longitude\": \"77.2090\",\r\n    \"user_id\": \"6\",\r\n    \"sess_id\": \"77de68daecd823babbb58edb1c8e14d7106e83bb\",\r\n    \"post_id\": 2\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://klassart.com/web/rest/api/post/delete",
+					"protocol": "https",
+					"host": [
+						"klassart",
+						"com"
+					],
+					"path": [
+						"web",
+						"rest",
+						"api",
+						"post",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload Post Image",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "device",
+							"value": "android",
+							"type": "text"
+						},
+						{
+							"key": "app_version",
+							"value": "1.0.5",
+							"type": "text"
+						},
+						{
+							"key": "sess_id",
+							"value": "b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f",
+							"type": "text"
+						},
+						{
+							"key": "user_id",
+							"value": "11",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/admin/Downloads/2024-06GargHoldingsLogo.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://klassart.com/web/rest/api/post/upload-post-image",
+					"protocol": "https",
+					"host": [
+						"klassart",
+						"com"
+					],
+					"path": [
+						"web",
+						"rest",
+						"api",
+						"post",
+						"upload-post-image"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Cart",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"device\": \"android\",\r\n    \"app_version\": \"1.0.5\",\r\n    \"latitude\": \"28.6139\",\r\n    \"longitude\": \"77.2090\",\r\n    \"user_id\": \"12\",\r\n    \"sess_id\": \"b6692ea5df920cad691c20319a6fffd7a4a766b8\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://klassart.com/web/rest/api/cart",
+					"protocol": "https",
+					"host": [
+						"klassart",
+						"com"
+					],
+					"path": [
+						"web",
+						"rest",
+						"api",
+						"cart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add to Cart",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"device\": \"android\",\r\n    \"app_version\": \"1.0.5\",\r\n    \"latitude\": \"28.6139\",\r\n    \"longitude\": \"77.2090\",\r\n    \"user_id\": \"12\",\r\n    \"sess_id\": \"b6692ea5df920cad691c20319a6fffd7a4a766b8\",\r\n    \"post_id\" : \"1\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://klassart.com/web/rest/api/cart/add",
+					"protocol": "https",
+					"host": [
+						"klassart",
+						"com"
+					],
+					"path": [
+						"web",
+						"rest",
+						"api",
+						"cart",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove Cart",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"device\": \"android\",\r\n    \"app_version\": \"1.0.5\",\r\n    \"latitude\": \"28.6139\",\r\n    \"longitude\": \"77.2090\",\r\n    \"user_id\": \"12\",\r\n    \"sess_id\": \"b6692ea5df920cad691c20319a6fffd7a4a766b8\",\r\n    \"post_id\" : \"1\",\r\n    \"cart_id\" : \"1\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://klassart.com/web/rest/api/cart/remove",
+					"protocol": "https",
+					"host": [
+						"klassart",
+						"com"
+					],
+					"path": [
+						"web",
+						"rest",
+						"api",
+						"cart",
+						"remove"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Empty Cart",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"device\": \"android\",\r\n    \"app_version\": \"1.0.5\",\r\n    \"latitude\": \"28.6139\",\r\n    \"longitude\": \"77.2090\",\r\n    \"user_id\": \"12\",\r\n    \"sess_id\": \"b6692ea5df920cad691c20319a6fffd7a4a766b8\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://klassart.com/web/rest/api/cart/empty",
+					"protocol": "https",
+					"host": [
+						"klassart",
+						"com"
+					],
+					"path": [
+						"web",
+						"rest",
+						"api",
+						"cart",
+						"empty"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Generate Image",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"device\": \"android\",\r\n    \"app_version\": \"1.0.5\",\r\n    \"latitude\": \"28.6139\",\r\n    \"longitude\": \"77.2090\",\r\n    \"user_id\": \"12\",\r\n    \"sess_id\": \"761f22b2c1593d0bb87e0b606f990ba4974706de\",\r\n    \"prompt\" : \"A photorealistic image of a golden retriever puppy playing with a red ball on green grass in sunlight\",\r\n    \"style\" : \"\",\r\n    \"size\" : \"\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://klassart.com/web/rest/api/prompt/generate",
+					"protocol": "https",
+					"host": [
+						"klassart",
+						"com"
+					],
+					"path": [
+						"web",
+						"rest",
+						"api",
+						"prompt",
+						"generate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Generate Image Edit",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "device",
+							"value": "android",
+							"type": "text"
+						},
+						{
+							"key": "user_id",
+							"value": "12",
+							"type": "text"
+						},
+						{
+							"key": "sess_id",
+							"value": "761f22b2c1593d0bb87e0b606f990ba4974706de",
+							"type": "text"
+						},
+						{
+							"key": "app_version",
+							"value": "1.0.5",
+							"type": "text"
+						},
+						{
+							"key": "prompt",
+							"value": "A photorealistic image of a golden retriever puppy playing with a red ball on green grass in sunlight",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/admin/Pictures/Screenshots/Screenshot (1).png"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://klassart.com/web/rest/api/prompt/image/edits",
+					"protocol": "https",
+					"host": [
+						"klassart",
+						"com"
+					],
+					"path": [
+						"web",
+						"rest",
+						"api",
+						"prompt",
+						"image",
+						"edits"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

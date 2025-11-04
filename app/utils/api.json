@@ -1,0 +1,396 @@
+{
+  "login": {
+    "method": "POST",
+    "url": "https://klassart.com/web/rest/api/account/login-validate",
+    "payload": {
+      "device": "web",
+      "app_version": "1.0.5",
+      "latitude": "28.6139",
+      "longitude": "77.2090",
+      "email": "string",
+      "password": "string"
+    }
+  },
+  "register": {
+    "method": "POST",
+    "url": "https://klassart.com/web/rest/api/account/register",
+    "payload": {
+      "device": "web",
+      "app_version": "1.0.5",
+      "latitude": "28.6139",
+      "longitude": "77.2090",
+      "name": "string",
+      "email": "string",
+      "password": "string",
+      "confirm_password": "string"
+    }
+  },
+  "sendOtp": {
+    "method": "POST",
+    "url": "https://klassart.com/web/rest/api/account/send-otp",
+    "payload": {
+      "device": "web",
+      "app_version": "1.0.5",
+      "latitude": "28.6139",
+      "longitude": "77.2090",
+      "email": "string"
+    }
+  },
+  "validateOtp": {
+    "method": "POST",
+    "url": "https://klassart.com/web/rest/api/account/verify-otp",
+    "payload": {
+      "device": "web",
+      "app_version": "1.0.5",
+      "latitude": "28.6139",
+      "longitude": "77.2090",
+      "email": "string",
+      "otp": "string"
+    }
+  },
+  "logout": {
+    "method": "POST",
+    "url": "https://klassart.com/web/rest/api/account/logout",
+    "protected": true,
+    "payload": {
+      "device": "web",
+      "app_version": "1.0.5",
+      "latitude": "28.6139",
+      "longitude": "77.2090"
+    }
+  },
+  "getDashboard": {
+    "method": "POST",
+    "url": "https://klassart.com/web/rest/api/dashboard",
+    "protected": true,
+    "payload": {
+      "device": "web",
+      "app_version": "1.0.5",
+      "latitude": "28.6139",
+      "longitude": "77.2090",
+      "page": "1",
+      "query": "",
+      "orientation_ids": [],
+      "sub_category_id": "",
+      "article_category_id": "",
+      "price": ""
+    }
+  },
+  "getNotifications": {
+    "method": "POST",
+    "url": "https://klassart.com/web/rest/api/notification",
+    "protected": true,
+    "payload": {
+      "device": "web",
+      "app_version": "1.0.5",
+      "latitude": "28.6139",
+      "longitude": "77.2090",
+      "page": "1",
+      "query": "",
+      "orientation_ids": [],
+      "sub_category_id": "",
+      "article_category_id": "",
+      "price": ""
+    }
+  },
+  "getUserInfo": {
+    "method": "POST",
+    "url": "https://klassart.com/web/rest/api/account/authorized",
+    "protected": true,
+    "payload": {
+      "device": "web",
+      "app_version": "1.0.5",
+      "latitude": "28.6139",
+      "longitude": "77.2090"
+    }
+  },
+  "getMyOrderHistory": {
+    "method": "POST",
+    "url": "https://klassart.com/web/rest/api/billing/my-order-history",
+    "protected": true,
+    "payload": {
+      "device": "web",
+      "app_version": "1.0.5",
+      "latitude": "28.6139",
+      "longitude": "77.2090",
+      "page": "1"
+    }
+  },
+  "changePassword": {
+    "method": "POST",
+    "url": "https://klassart.com/web/rest/api/account/update-forgot-password",
+    "protected": true,
+    "payload": {
+      "device": "web",
+      "app_version": "1.0.5",
+      "latitude": "28.6139",
+      "longitude": "77.2090",
+      "current_password": "string",
+      "new_password": "string",
+      "confirm_password": "string"
+    }
+  },
+  "updateAddress": {
+    "method": "POST",
+    "url": "https://klassart.com/web/rest/api/account/update-address",
+    "protected": true,
+    "payload": {
+      "device": "web",
+      "app_version": "1.0.5",
+      "latitude": "28.6139",
+      "longitude": "77.2090",
+      "address_line_1": "string",
+      "city": "string",
+      "zip": "string",
+      "state_code": "string"
+    }
+  },
+  "updateProfile": {
+    "method": "POST",
+    "url": "https://klassart.com/web/rest/api/account/update-profile",
+    "protected": true,
+    "payload": {
+      "device": "web",
+      "app_version": "1.0.5",
+      "latitude": "28.6139",
+      "longitude": "77.2090",
+      "name": "string",
+      "email": "string",
+      "phone": "string",
+      "image": ""
+    }
+  },
+  "uploadProfileImage": {
+    "method": "POST",
+    "url": "https://klassart.com/web/rest/api/account/upload-profile-image",
+    "protected": true,
+    "contentType": "multipart/form-data",
+    "payload": {
+      "device": "web",
+      "app_version": "1.0.5",
+      "file": "File"
+    }
+  },
+  "getMyPlan": {
+    "method": "POST",
+    "url": "https://klassart.com/web/rest/api/billing/my-plan",
+    "protected": true,
+    "payload": {
+      "device": "web",
+      "app_version": "1.0.5",
+      "latitude": "28.6139",
+      "longitude": "77.2090"
+    }
+  },
+  "startBilling": {
+    "method": "POST",
+    "url": "https://klassart.com/web/rest/api/billing/start-billing",
+    "protected": true,
+    "payload": {
+      "device": "web",
+      "app_version": "1.0.5",
+      "latitude": "28.6139",
+      "longitude": "77.2090"
+    }
+  },
+  "saveStartBilling": {
+    "method": "POST",
+    "url": "https://klassart.com/web/rest/api/billing/save-start-billing",
+    "protected": true,
+    "payload": {
+      "device": "web",
+      "app_version": "1.0.5",
+      "latitude": "28.6139",
+      "longitude": "77.2090",
+      "subscription_plan_id": "string"
+    }
+  },
+  "savePost": {
+    "method": "POST",
+    "url": "https://klassart.com/web/rest/api/post/save",
+    "protected": true,
+    "payload": {
+      "device": "web",
+      "app_version": "1.0.5",
+      "latitude": "28.6139",
+      "longitude": "77.2090",
+      "post_id": 0,
+      "article_category_id": "string",
+      "sub_category_id": "string",
+      "name": "string",
+      "image": "string",
+      "price": "string",
+      "description": "string",
+      "orientation_ids": []
+    }
+  },
+  "getMyPosts": {
+    "method": "POST",
+    "url": "https://klassart.com/web/rest/api/my-posts",
+    "protected": true,
+    "payload": {
+      "device": "web",
+      "app_version": "1.0.5",
+      "latitude": "28.6139",
+      "longitude": "77.2090",
+      "page": "1",
+      "query": "",
+      "orientation_ids": [],
+      "sub_category_id": "",
+      "article_category_id": "",
+      "price": ""
+    }
+  },
+  "getPostList": {
+    "method": "POST",
+    "url": "https://klassart.com/web/rest/api/post/list",
+    "payload": {
+      "page": "1",
+      "query": "",
+      "orientation_ids": [],
+      "sub_category_id": "",
+      "article_category_id": "",
+      "price": ""
+    }
+  },
+  "getFiltersList": {
+    "method": "POST",
+    "url": "https://klassart.com/web/rest/api/filters/list",
+    "payload": {
+      "page": "1",
+      "query": ""
+    }
+  },
+  "getPostForm": {
+    "method": "POST",
+    "url": "https://klassart.com/web/rest/api/post/form",
+    "protected": true,
+    "payload": {
+      "device": "web",
+      "app_version": "1.0.5",
+      "latitude": "28.6139",
+      "longitude": "77.2090",
+      "post_id": 0
+    }
+  },
+  "getPostFormEdit": {
+    "method": "POST",
+    "url": "https://klassart.com/web/rest/api/post/form/edit",
+    "protected": true,
+    "payload": {
+      "device": "web",
+      "app_version": "1.0.5",
+      "latitude": "28.6139",
+      "longitude": "77.2090",
+      "post_id": "number"
+    }
+  },
+  "getPostView": {
+    "method": "POST",
+    "url": "https://klassart.com/web/rest/api/post/view",
+    "protected": true,
+    "payload": {
+      "device": "web",
+      "app_version": "1.0.5",
+      "latitude": "28.6139",
+      "longitude": "77.2090",
+      "post_id": "number"
+    }
+  },
+  "deletePost": {
+    "method": "POST",
+    "url": "https://klassart.com/web/rest/api/post/delete",
+    "protected": true,
+    "payload": {
+      "device": "web",
+      "app_version": "1.0.5",
+      "latitude": "28.6139",
+      "longitude": "77.2090",
+      "post_id": "number"
+    }
+  },
+  "uploadPostImage": {
+    "method": "POST",
+    "url": "https://klassart.com/web/rest/api/post/upload-post-image",
+    "protected": true,
+    "contentType": "multipart/form-data",
+    "payload": {
+      "device": "web",
+      "app_version": "1.0.5",
+      "file": "File"
+    }
+  },
+  "getUserCart": {
+    "method": "POST",
+    "url": "https://klassart.com/web/rest/api/cart",
+    "protected": true,
+    "payload": {
+      "device": "web",
+      "app_version": "1.0.5",
+      "latitude": "28.6139",
+      "longitude": "77.2090"
+    }
+  },
+  "addToCart": {
+    "method": "POST",
+    "url": "https://klassart.com/web/rest/api/cart/add",
+    "protected": true,
+    "payload": {
+      "device": "web",
+      "app_version": "1.0.5",
+      "latitude": "28.6139",
+      "longitude": "77.2090",
+      "post_id": "string"
+    }
+  },
+  "removeFromCart": {
+    "method": "POST",
+    "url": "https://klassart.com/web/rest/api/cart/remove",
+    "protected": true,
+    "payload": {
+      "device": "web",
+      "app_version": "1.0.5",
+      "latitude": "28.6139",
+      "longitude": "77.2090",
+      "post_id": "string",
+      "cart_id": "string"
+    }
+  },
+  "emptyCart": {
+    "method": "POST",
+    "url": "https://klassart.com/web/rest/api/cart/empty",
+    "protected": true,
+    "payload": {
+      "device": "web",
+      "app_version": "1.0.5",
+      "latitude": "28.6139",
+      "longitude": "77.2090"
+    }
+  },
+  "generateImage": {
+    "method": "POST",
+    "url": "https://klassart.com/web/rest/api/prompt/generate",
+    "protected": true,
+    "payload": {
+      "device": "web",
+      "app_version": "1.0.5",
+      "latitude": "28.6139",
+      "longitude": "77.2090",
+      "prompt": "string",
+      "style": "",
+      "size": ""
+    }
+  },
+  "generateImageEdit": {
+    "method": "POST",
+    "url": "https://klassart.com/web/rest/api/prompt/image/edits",
+    "protected": true,
+    "contentType": "multipart/form-data",
+    "payload": {
+      "device": "web",
+      "app_version": "1.0.5",
+      "prompt": "string",
+      "image": "File"
+    }
+  }
+}

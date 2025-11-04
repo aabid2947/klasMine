@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../glancetechy"
+		},
+		{
+			"path": "../../../old-glancetechy"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "glancetechy"
+	}
+}
