@@ -2,11 +2,12 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-
+import { useAuthStore } from "../../store/useAuthStore";
 const AvatarDropdown: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [showModal, setShowModal] = useState(false);
+   const user = useAuthStore((state) => state.user);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -41,7 +42,7 @@ const AvatarDropdown: React.FC = () => {
         onClick={() => setIsOpen(!isOpen)}
         className="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center text-white font-bold cursor-pointer"
       >
-        A
+        {user?.name ? user.name.charAt(0).toUpperCase() : 'U'}
       </div>
 
       {isOpen && (

@@ -9,6 +9,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 export default function MyProfile() {
   const user = useAuthStore((state) => state.user);
+
   // form states
   const [nameInput, setNameInput] = useState(user?.name ?? "");
   const [emailInput, setEmailInput] = useState(user?.email ?? "");

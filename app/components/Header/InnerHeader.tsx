@@ -131,42 +131,42 @@ const Header: React.FC = () => {
         </button>
 
         <ul className="mt-12 space-y-4">
-          <li>
+          <li   onClick={() => setMenuOpen(false)} >
             <Link href="/account/dashboard" className="block border-b border-gray-200 px-4 py-2 text-gray-800 hover:text-indigo-600">
               Dashboard
             </Link>
           </li>
-          <li>
+          <li   onClick={() => setMenuOpen(false)}>
             <Link href="/service/TextToImage" className="block border-b border-gray-200 px-4 py-2 text-gray-800 hover:text-indigo-600">
               Text to Image
             </Link>
           </li>
-          <li>
+          <li   onClick={() => setMenuOpen(false)}>
             <Link href="/service/ImageToImage" className="block border-b border-gray-200 px-4 py-2 text-gray-800 hover:text-indigo-600">
               Image to Image
             </Link>
           </li>
-          <li>
+          <li    onClick={() => setMenuOpen(false)}>
             <Link href="/service/TextBehindImage" className="block border-b border-gray-200 px-4 py-2 text-gray-800 hover:text-indigo-600">
               Text Behind Image
             </Link>
           </li>
-          <li>
+          <li   onClick={() => setMenuOpen(false)}>
             <Link href="/products" className="block border-b border-gray-200 px-4 py-2 text-gray-800 hover:text-indigo-600">
               Marketplace
             </Link>
           </li>
-          <li>
+          <li  onClick={() => setMenuOpen(false)}>
             <Link href="/subscription" className="block border-b border-gray-200 px-4 py-2 text-gray-800 hover:text-indigo-600">
               Subscription
             </Link>
           </li>
-          <li>
+          <li   onClick={() => setMenuOpen(false)}>
             <Link href="/cart" className="flex border-b border-gray-200 px-4 py-2 text-gray-800 hover:text-indigo-600">
               <img src="/assets/images/icon/cart.svg" alt="Cart" className="w-5 h-5 mr-2" />Cart
             </Link>
           </li>
-          <li>
+          <li   onClick={() => setMenuOpen(false)}>
             <Link href="/account/my-plan" className="flex px-4 py-2 text-gray-800 hover:text-indigo-600">
               <div className="flex items-center cursor-pointer">
                 <img src="/assets/images/icon/win.svg" alt="Upgrade" className="w-5 h-5 mr-2" />

@@ -18,6 +18,11 @@ const nextConfig = {
         hostname: "cdn.dribbble.com",
         pathname: "/**", // allow all paths from dribbble
       },
+      {
+        protocol: "https",
+        hostname: "admin.klassart.com",
+        pathname: "/**", // allow all paths from klassart
+      },
     ],
   },
   reactStrictMode: true,

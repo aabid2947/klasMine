@@ -18,6 +18,7 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSwitch }) => {
     password: "",
     confirm_password: "",
   });
+  const [showPassword,setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
 
@@ -106,7 +107,7 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSwitch }) => {
             </label>
             <div className="relative">
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 value={formData.password}
                 onChange={handleChange}
                 placeholder="Enter your password"
@@ -114,7 +115,7 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSwitch }) => {
                 className="w-full mt-1 px-4 py-2 border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
                 required
               />
-              <span className="absolute right-3 top-3 cursor-pointer text-gray-400">
+              <span onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-3 cursor-pointer text-gray-400">
                 👁️
               </span>
             </div>
@@ -128,12 +129,12 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSwitch }) => {
               <input
                 value={formData.confirm_password}
                 onChange={handleChange}
-                type="password"
+                type={showPassword ? "text" : "password"}
                 name="confirm_password"
                 placeholder="Confirm your password"
                 className="w-full mt-1 px-4 py-2 border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
               />
-              <span className="absolute right-3 top-3 cursor-pointer text-gray-400">
+              <span onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-3 cursor-pointer text-gray-400">
                 👁️
               </span>
             </div>
