@@ -124,11 +124,11 @@ export const PricingSection = () => {
         }`}>
           {plan.description}
         </p>
-        <p className={`font-openSans text-6xl font-black mt-4 ${
+        <p className={`font-openSans text-5xl font-black mt-4 ${
           isPopular ? "text-white" : "text-[#5555FF]"
         }`}>
           <span>
-            <span className="font-dmSans">₹</span> {plan.subscription_fee}{" "}
+            <span className="font-dmSans" >₹</span> {plan.subscription_fee}{" "}
             <span className={`text-sm font-light ${
               isPopular ? "text-white" : "text-gray-500"
             }`}>
@@ -136,7 +136,7 @@ export const PricingSection = () => {
             </span>
           </span>
         </p>
-        <p className={`font-bold font-openSans ${
+        <p className={`font-bold mt-2 font-openSans ${
           isPopular ? "text-white" : "text-black"
         }`}>
           What's included
