@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
-
+const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL;
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     
     console.log('Payment API Proxy - Request body:', body);
     
-    const response = await fetch('https://klassart.com/web/rest/api/payment/process', {
+    const response = await fetch(`${BACKEND_URL}/payment/process`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

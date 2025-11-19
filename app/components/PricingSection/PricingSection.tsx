@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { postRequest } from "@/app/utils/api";
+import { useAuthStore } from "@/app/store/useAuthStore";
+import AuthModal from "../AuthModal";
 
 interface Include {
   include_id: string;
@@ -33,9 +35,20 @@ interface SubscriptionPlan {
 export const PricingSection = () => {
   const [plans, setPlans] = useState<SubscriptionPlan[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [formType, setFormType] = useState<"login" | "signup" | "forgot">("login");
   const router = useRouter();
+  const { user } = useAuthStore();
 
   const handlePlanClick = (planId?: string) => {
+    // Check if user is logged in
+    if (!user) {
+      // If not logged in, open auth modal
+      setIsAuthModalOpen(true);
+      return;
+    }
+    
+    // If logged in, proceed to subscription page
     router.push('/subscription');
   };
 
@@ -62,22 +75,6 @@ export const PricingSection = () => {
 
     fetchPricingData();
   }, []);
-
-  // Free plan as static since it's not in API
-  const freePlan = {
-    title: "Free Plan",
-    sub_title: "Basic Access",
-    description: "Best for casual users who want to try AI-generated images with basic features.",
-    subscription_fee: "0.00",
-    includes: [
-      { discription: "Limited AI image generations" },
-      { discription: "Watermarked images" },
-      { discription: "Basic resolution output" },
-      { discription: "Limited text extraction" }
-    ],
-    image: "/assets/images/icon/pricing-icon01.svg",
-    is_popular: "0"
-  };
 
   const renderPricingCard = (plan: any, index: number, isMiddle: boolean = false) => {
     const isPopular = plan.is_popular === "1";
@@ -206,26 +203,26 @@ export const PricingSection = () => {
             <span className="ml-3 text-lg text-gray-600">Loading pricing plans...</span>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto relative mt-24">
-            {/* Arrange plans: Free, Popular in middle, Other */}
-            {(() => {
-              const popularPlan = plans.find(plan => plan.is_popular === "1");
-              const otherPlan = plans.find(plan => plan.is_popular === "0");
-              
-              return (
-                <>
-                  {/* Free Plan - Left */}
-                  {renderPricingCard(freePlan, 0)}
-                  
-                  {/* Popular Plan - Middle */}
-                  {popularPlan && renderPricingCard(popularPlan, 2, true)}
-                  
-                  {/* Other Plan - Right */}
-                  {otherPlan && renderPricingCard(otherPlan, 3, false)}
-                </>
-              );
-            })()}
+          <div className={`grid gap-6 max-w-6xl mx-auto relative mt-24 ${
+            plans.length === 1 ? 'grid-cols-1 justify-items-center max-w-md' :
+            plans.length === 2 ? 'grid-cols-1 md:grid-cols-2 max-w-4xl' :
+            'grid-cols-1 md:grid-cols-3'
+          }`}>
+            {plans.map((plan, index) => {
+              // For 3 plans, make the popular one in the middle elevated
+              const isMiddleElevated = plans.length === 3 && plan.is_popular === "1";
+              return renderPricingCard(plan, index, isMiddleElevated);
+            })}
           </div>
+        )}
+        
+        {/* Auth Modal */}
+        {isAuthModalOpen && (
+          <AuthModal 
+            formType={formType} 
+            setFormType={setFormType} 
+            onClose={() => setIsAuthModalOpen(false)} 
+          />
         )}
       </>
     </section>
