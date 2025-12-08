@@ -379,21 +379,23 @@ export default function SubscriptionPage() {
             {activePlanInfo ? (
               <div className="max-w-2xl mx-auto">
                 <div className="rounded-2xl p-6 sm:p-8 md:p-12 shadow-xl relative bg-[linear-gradient(-120deg,_#5555FF,_#C289FF)] hover:bg-[linear-gradient(-90deg,_#C289FF,_#5555FF)] text-white">
-                  <div className="flex gap-2 relative mb-6">
-                    <img 
-                      className="w-16 h-16 object-cover rounded" 
-                      src="/assets/images/icon/pricing-icon02.svg"
-                      alt="Active Plan"
-                    />
-                    <div className="">
-                      <p className="font-openSans text-[18px] font-[400] text-white">
-                        {activePlanInfo.subscription_plan_title}
-                      </p>
-                      <p className="font-openSans text-2xl font-bold text-white">
-                        Current Plan
-                      </p>
+                  <div className="flex flex-col sm:flex-row gap-4 sm:gap-2 relative mb-6 items-start sm:items-center justify-between">
+                    <div className="flex gap-4 items-center">
+                      <img 
+                        className="w-16 h-16 object-cover rounded" 
+                        src="/assets/images/icon/pricing-icon02.svg"
+                        alt="Active Plan"
+                      />
+                      <div className="">
+                        <p className="font-openSans text-lg font-[400] text-white">
+                          {activePlanInfo.subscription_plan_title}
+                        </p>
+                        <p className="font-openSans text-xl sm:text-2xl font-bold text-white">
+                          Current Plan
+                        </p>
+                      </div>
                     </div>
-                    <div className="absolute px-8 py-2 bg-white/20 right-0 -top-5 rounded-lg">
+                    <div className="sm:absolute px-6 sm:px-8 py-2 bg-white/20 sm:right-0 sm:-top-5 rounded-lg self-start sm:self-auto mt-4 sm:mt-0">
                       Active
                     </div>
                   </div>
@@ -473,13 +475,13 @@ export default function SubscriptionPage() {
               </div>
             ) : (
               // Show available subscription plans if no active plan
-              <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-4 sm:gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 items-start">
                 {subscriptionPlans.map((plan, index) => (
               <div 
                 key={plan.subscription_plan_id}
-                className={`rounded-2xl p-6 sm:p-8 md:p-12 shadow-xl relative ${
+                className={`rounded-2xl p-6 sm:p-8 md:p-12 shadow-xl relative transition-all duration-300 ${
                   index === 0 
-                    ? 'bg-gradient-to-br from-indigo-500 to-purple-500 text-white 2xl-scale-105 top-[0px] 2xl:top-[-13px]' 
+                    ? 'bg-gradient-to-br from-indigo-500 to-purple-500 text-white xl:scale-105 xl:-translate-y-4 z-10' 
                     : 'bg-white text-gray-900 flex flex-col justify-between'
                 }`}
               >

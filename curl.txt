@@ -56,5 +56,12 @@ curl -X POST 'https://api.klassart.com/rest/api/account/login-validate' -H 'Cont
     
 }'
 
-    curl -X POST 'https://api.klassart.com/rest/api/prompt/image/edits' -F 'device=android' -F 'user_id=12' -F 'sess_id=761f22b2c1593d0bb87e0b606f990ba4974706de' -F 'app_version=1.0.5' -F 'prompt=A photorealistic image of a golden retriever puppy playing with a red ball on green grass in sunlight' -F 'style=1' -F 'substyle=2' -F 'size=1' -F 'noofimg=2' -F 'image=@/C:/Users/hp/Downloads/1760590128_images.jfif' 
+    curl -X POST 'https://api.klassart.com/rest/api/prompt/image/edits' -F 'device=android' -F 'user_id=28' -F 'sess_id=733b57ae9e45bae742221b555c15e97f45364893' -F 'app_version=1.0.5' -F 'prompt=A photorealistic image of a golden retriever puppy playing with a red ball on green grass in sunlight' -F 'style=1' -F 'substyle=2' -F 'size=1' -F 'noofimg=2' -F 'image=@/C:/Users/hp/Downloads/1760590128_images.jfif' 
 
+
+  curl -X POST 'https://api.klassart.com/rest/api/prompt/enhence' -F 'device=android' -F 'user_id=28' -F 'sess_id=733b57ae9e45bae742221b555c15e97f45364893' -F 'app_version=1.0.5' -F 'content=imporove logo' 
+
+
+
+//New api
+1. my-plan, 

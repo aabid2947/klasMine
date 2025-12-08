@@ -84,9 +84,9 @@ export default function DashboardHeader() {
   });
 
   return (
-    <>
+    <div className="space-y-6 py-6">
       {/* Header Section */}
-      <div className="min-h-[120px] sm:min-h-[150px] md:min-h-[200px] py-4 sm:py-6 md:py-8 lg:py-12 px-4 sm:px-6 md:px-0">
+      <div>
         <h1 className="font-medium text-[#333333] text-[24px] sm:text-[28px] md:text-[36px] lg:text-[44px] mb-2">
           Dashboard
         </h1>
@@ -158,8 +158,7 @@ export default function DashboardHeader() {
       </div>
 
       {/* Table Section */}
-      <div className="p-4 sm:p-6 md:p-8 pt-0">
-        <div className="bg-white p-3 sm:p-4 md:p-6 rounded-lg sm:rounded-xl border border-gray-200">
+      <div className="bg-white p-3 sm:p-4 md:p-6 rounded-lg sm:rounded-xl border border-gray-200">
           {/* Tabs + Search + Filter */}
           <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-2 sm:gap-3 mb-3 sm:mb-4">
             <div className="flex rounded-md border border-[#5054C2] overflow-hidden w-full lg:w-auto">
@@ -208,18 +207,18 @@ export default function DashboardHeader() {
           </div>
 
           {/* Table */}
-          <div className="overflow-x-auto rounded-md -mx-3 sm:mx-0">
-            <table className="w-full table-auto text-xs sm:text-sm text-left border-collapse min-w-[550px] sm:min-w-[600px]">
+          <div className="w-full overflow-x-auto rounded-md border border-gray-200">
+            <table className="w-full text-xs sm:text-sm text-left border-collapse">
               <thead>
-                <tr className="bg-gradient-to-r from-purple-500 to-indigo-500 text-white rounded-t-md">
-                  <th className="px-2 sm:px-3 md:px-5 py-2.5 sm:py-3 md:py-5 w-[60px] sm:w-[80px] md:w-[150px] font-medium text-[11px] sm:text-xs md:text-sm">Sr. No.</th>
-                  <th className="px-2 sm:px-3 md:px-5 py-2.5 sm:py-3 md:py-5 w-[80px] sm:w-[100px] md:w-[150px] font-medium text-[11px] sm:text-xs md:text-sm">Image</th>
-                  <th className="px-2 sm:px-3 md:px-5 py-2.5 sm:py-3 md:py-5 w-[150px] sm:w-[200px] md:w-[350px] font-medium text-[11px] sm:text-xs md:text-sm">
+                <tr className="bg-gradient-to-r from-purple-500 to-indigo-500 text-white">
+                  <th className="whitespace-nowrap px-2 sm:px-3 md:px-5 py-2.5 sm:py-3 md:py-5 w-auto font-medium text-[11px] sm:text-xs md:text-sm">Sr. No.</th>
+                  <th className="whitespace-nowrap px-2 sm:px-3 md:px-5 py-2.5 sm:py-3 md:py-5 w-auto font-medium text-[11px] sm:text-xs md:text-sm">Image</th>
+                  <th className="px-2 sm:px-3 md:px-5 py-2.5 sm:py-3 md:py-5 w-auto font-medium text-[11px] sm:text-xs md:text-sm">
                     Product Name
                   </th>
-                  <th className="px-2 sm:px-3 md:px-5 py-2.5 sm:py-3 md:py-5 font-medium text-[11px] sm:text-xs md:text-sm">Category</th>
-                  <th className="px-2 sm:px-3 md:px-5 py-2.5 sm:py-3 md:py-5 font-medium text-[11px] sm:text-xs md:text-sm">Price</th>
-                  <th className="px-2 sm:px-3 md:px-5 py-2.5 sm:py-3 md:py-5 font-medium text-center text-[11px] sm:text-xs md:text-sm">Action</th>
+                  <th className="whitespace-nowrap px-2 sm:px-3 md:px-5 py-2.5 sm:py-3 md:py-5 w-auto font-medium text-[11px] sm:text-xs md:text-sm">Category</th>
+                  <th className="whitespace-nowrap px-2 sm:px-3 md:px-5 py-2.5 sm:py-3 md:py-5 w-auto font-medium text-[11px] sm:text-xs md:text-sm">Price</th>
+                  <th className="whitespace-nowrap px-2 sm:px-3 md:px-5 py-2.5 sm:py-3 md:py-5 w-auto font-medium text-center text-[11px] sm:text-xs md:text-sm">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -238,7 +237,7 @@ export default function DashboardHeader() {
                       key={item.post_id}
                       className="border-b border-gray-200 hover:bg-gray-50 transition"
                     >
-                      <td className="px-2 sm:px-3 md:px-4 py-2 sm:py-2.5 md:py-3 text-[#555555] text-[11px] sm:text-xs md:text-sm">{index + 1}.</td>
+                      <td className="whitespace-nowrap px-2 sm:px-3 md:px-4 py-2 sm:py-2.5 md:py-3 text-[#555555] text-[11px] sm:text-xs md:text-sm">{index + 1}.</td>
                       <td className="px-2 sm:px-3 md:px-4 py-2 sm:py-2.5 md:py-3 text-[#555555]">
                         <Image
                           src={item.image_url}
@@ -248,10 +247,10 @@ export default function DashboardHeader() {
                           className="rounded object-cover w-12 sm:w-16 md:w-20 lg:w-24 h-auto"
                         />
                       </td>
-                      <td className="px-2 sm:px-3 md:px-4 py-2 sm:py-2.5 md:py-3 text-[#555555] text-[11px] sm:text-xs md:text-sm">
+                      <td className="px-2 sm:px-3 md:px-4 py-2 sm:py-2.5 md:py-3 text-[#555555] text-[11px] sm:text-xs md:text-sm max-w-[150px] sm:max-w-xs break-words">
                         {item.name}
                       </td>
-                      <td className="px-2 sm:px-3 md:px-4 py-2 sm:py-2.5 md:py-3 text-[#555555] text-[11px] sm:text-xs md:text-sm">
+                      <td className="px-2 sm:px-3 md:px-4 py-2 sm:py-2.5 md:py-3 text-[#555555] text-[11px] sm:text-xs md:text-sm max-w-[100px] sm:max-w-none break-words">
                         {item.article_category_name}
                       </td>
                       <td className="px-2 sm:px-3 md:px-4 py-2 sm:py-2.5 md:py-3 text-[#555555] text-[11px] sm:text-xs md:text-sm whitespace-nowrap">
@@ -287,7 +286,6 @@ export default function DashboardHeader() {
             </button>
           </div>
         </div>
-      </div>
-    </>
+    </div>
   );
 }
