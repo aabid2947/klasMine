@@ -13,6 +13,7 @@ interface SubscriptionPlan {
   subscription_time: string;
   subscription_time_unit: string;
   free_trial_days: string;
+  description: string;
   status: string;
   is_deleted: string;
   modified: string;
