@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation';
 interface SubscriptionPlan {
   subscription_plan_id: string;
   title: string;
+  image:string;
   subscription_fee: string;
   subscription_time: string;
   subscription_time_unit: string;
@@ -496,7 +497,7 @@ export default function SubscriptionPage() {
                     <div className="flex mb-4">
                       <div className="pricing-icon mr-3 sm:mr-4 flex-shrink-0">
                         <img 
-                          src={index === 0 ? "/assets/images/icon/pricing-icon02.svg" : "/assets/images/icon/pricing-icon01.svg"} 
+                          src={plan.image? plan.image : "/assets/images/icon/pricing-icon01.svg"} 
                           alt={plan.title}
                           className="w-12 h-12 sm:w-16 sm:h-16"
                         />
