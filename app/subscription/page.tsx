@@ -18,6 +18,11 @@ interface SubscriptionPlan {
   modified: string;
   created: string;
   is_can_post: string;
+  includes: {
+    include_id: string;
+    discription: string;
+    slug: string | null;
+  }[];
 }
 
 interface ActivePlanInfo {
@@ -510,12 +515,7 @@ export default function SubscriptionPage() {
                   </div>
                   
                   <p className={`text-xs sm:text-sm mb-4 ${index === 0 ? 'text-white' : 'text-gray-500'}`}>
-                    {plan.free_trial_days !== "0" 
-                      ? `Includes ${plan.free_trial_days} days free trial` 
-                      : index === 0 
-                        ? 'Content creators, designers, and users who need more flexibility.' 
-                        : 'Best for: Businesses, agencies, and professionals who need AI without limits.'
-                    }
+                    {plan.description}
                   </p>
                   
                   <p className={`text-2xl sm:text-3xl md:text-[40px] lg:text-[54px] font-bold mb-2 ${index === 0 ? 'text-white' : 'text-[#5555FF]'}`}>
@@ -525,44 +525,21 @@ export default function SubscriptionPage() {
                     </span>
                   </p>
 
-                  <ul className="mt-4 space-y-3 sm:space-y-4 text-sm">
-                    <li className={`flex items-start sm:items-center text-[14px] sm:text-[15px] md:text-[17px] ${index === 0 ? 'text-white' : 'text-black'}`}>
-                      <span className={`${index === 0 ? 'bg-white' : 'bg-gradient-to-r from-[#C289FF] to-[#5555FF]'} w-[28px] h-[28px] sm:w-[32px] sm:h-[32px] rounded-full p-2 mr-2 flex-shrink-0`}>
-                        <img 
-                          src={index === 0 ? "/assets/images/icon/blue-Check.png" : "/assets/images/icon/Check.png"} 
-                          alt="Check" 
-                        />
-                      </span>
-                      <span>{plan.is_can_post === "1" ? "Can create and post content" : "View only access"}</span>
-                    </li>
-                    <li className={`flex items-start sm:items-center text-[14px] sm:text-[15px] md:text-[17px] ${index === 0 ? 'text-white' : 'text-black'}`}>
-                      <span className={`${index === 0 ? 'bg-white' : 'bg-gradient-to-r from-[#C289FF] to-[#5555FF]'} w-[28px] h-[28px] sm:w-[32px] sm:h-[32px] rounded-full p-2 mr-2 flex-shrink-0`}>
-                        <img 
-                          src={index === 0 ? "/assets/images/icon/blue-Check.png" : "/assets/images/icon/Check.png"} 
-                          alt="Check" 
-                        />
-                      </span>
-                      <span>{index === 0 ? "High-resolution images" : "Ultra HD & 4K resolution outputs"}</span>
-                    </li>
-                    <li className={`flex items-start sm:items-center text-[14px] sm:text-[15px] md:text-[17px] ${index === 0 ? 'text-white' : 'text-black'}`}>
-                      <span className={`${index === 0 ? 'bg-white' : 'bg-gradient-to-r from-[#C289FF] to-[#5555FF]'} w-[28px] h-[28px] sm:w-[32px] sm:h-[32px] rounded-full p-2 mr-2 flex-shrink-0`}>
-                        <img 
-                          src={index === 0 ? "/assets/images/icon/blue-Check.png" : "/assets/images/icon/Check.png"} 
-                          alt="Check" 
-                        />
-                      </span>
-                      <span>{index === 0 ? "No watermark on generated images" : "No limits – full commercial rights"}</span>
-                    </li>
-                    <li className={`flex items-start sm:items-center text-[14px] sm:text-[15px] md:text-[17px] ${index === 0 ? 'text-white' : 'text-black'}`}>
-                      <span className={`${index === 0 ? 'bg-white' : 'bg-gradient-to-r from-[#C289FF] to-[#5555FF]'} w-[28px] h-[28px] sm:w-[32px] sm:h-[32px] rounded-full p-2 mr-2 flex-shrink-0`}>
-                        <img 
-                          src={index === 0 ? "/assets/images/icon/blue-Check.png" : "/assets/images/icon/Check.png"} 
-                          alt="Check" 
-                        />
-                      </span>
-                      <span>{index === 0 ? "Access to multiple styles" : "Enhanced product placement"}</span>
-                    </li>
-                  </ul>
+                  {plan.includes && plan.includes.length > 0 && (
+                    <ul className="mt-4 space-y-3 sm:space-y-4 text-sm">
+                      {plan.includes.map((include, idx) => (
+                        <li key={include.include_id || idx} className={`flex items-start sm:items-center text-[14px] sm:text-[15px] md:text-[17px] ${index === 0 ? 'text-white' : 'text-black'}`}>
+                          <span className={`${index === 0 ? 'bg-white' : 'bg-gradient-to-r from-[#C289FF] to-[#5555FF]'} w-[28px] h-[28px] sm:w-[32px] sm:h-[32px] rounded-full p-2 mr-2 flex-shrink-0`}>
+                            <img 
+                              src={index === 0 ? "/assets/images/icon/blue-Check.png" : "/assets/images/icon/Check.png"} 
+                              alt="Check" 
+                            />
+                          </span>
+                          <span>{include.discription}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
 
                 <button

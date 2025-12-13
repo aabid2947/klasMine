@@ -39,9 +39,10 @@ const LoginForm: React.FC<LoginFormProps> = ({
       };
 
       const res = await postRequest("/account/login-validate", payload);
-
-      // ❌ Error case
+      console.log("Login response:", res);
+      //  Error case
       if (res?.error) {
+        alert(res.message || "Login failed.");
         setError(res.message || "Something went wrong.");
       }
       // ✅ Success case
@@ -68,6 +69,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
 
       // If backend sends error inside response
       if (err?.response?.data?.message) {
+        alert(err.response.data.message);
         setError(err.response.data.message);
       } else {
         setError("Invalid email or password.");

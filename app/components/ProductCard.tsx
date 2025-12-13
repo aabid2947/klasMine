@@ -35,7 +35,7 @@ export default function ProductCard({
         <img src={image_url} alt={name} className="w-full object-cover" />
 
         {/* Hover icons */}
-        <div className="absolute top-4 right-4 space-y-2 opacity-0 group-hover:opacity-100 transition">
+        {/* <div className="absolute top-4 right-4 space-y-2 opacity-0 group-hover:opacity-100 transition">
           <button
             className="p-2 rounded-full cursor-pointer"
             onClick={() => {
@@ -48,7 +48,7 @@ export default function ProductCard({
           <button className="p-2 rounded-full cursor-pointer">
             <img src="/assets/images/icon/white-cart.svg" alt="Cart" />
           </button>
-        </div>
+        </div> */}
 
         {/* Details */}
         <div className="p-4">

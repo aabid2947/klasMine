@@ -146,11 +146,11 @@ const Header: React.FC = () => {
               Image to Image
             </Link>
           </li>
-          <li    onClick={() => setMenuOpen(false)}>
+          {/* <li    onClick={() => setMenuOpen(false)}>
             <Link href="/service/TextBehindImage" className="block border-b border-gray-200 px-4 py-2 text-gray-800 hover:text-indigo-600">
               Text Behind Image
             </Link>
-          </li>
+          </li> */}
           <li   onClick={() => setMenuOpen(false)}>
             <Link href="/products" className="block border-b border-gray-200 px-4 py-2 text-gray-800 hover:text-indigo-600">
               Marketplace

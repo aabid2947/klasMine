@@ -295,7 +295,7 @@ export default function ImageGeneratorOption({ onImageGenerated, onImagesGenerat
   };
 
   return (
-    <div className="h-[calc(100vh-65px)] text-black w-[360px] 2xl:w-[420px] p-6 border-r border-gray-300 bg-white flex">
+    <div className="min-h-[calc(100vh-65px)] text-black w-full p-6 border-r border-gray-300 bg-white flex">
       <div className="w-full">
         <h2 className="text-xl font-normal mb-4">Generate an Image</h2>
 
@@ -374,11 +374,23 @@ export default function ImageGeneratorOption({ onImageGenerated, onImagesGenerat
         </div>
 
         {isSizeOpen && !(isLoading || isEnhancing) && filters?.article_style && (
-          <div 
-            ref={articleStyleModalRef} 
-            className="absolute max-w-[370px] w-full left-[590px] top-[200px] mt-2 border border-gray-300 rounded-md bg-white shadow-lg z-10 max-h-96 overflow-y-auto"
-          >
-            <div className="p-2">
+          <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+            <div 
+              ref={articleStyleModalRef} 
+              className="bg-white rounded-xl w-full max-w-md max-h-[80vh] overflow-hidden flex flex-col shadow-2xl"
+            >
+              <div className="p-4 border-b flex justify-between items-center">
+                <h3 className="text-lg font-semibold text-gray-900">Select Article Style</h3>
+                <button 
+                  onClick={() => setIsSizeOpen(false)}
+                  className="p-1 hover:bg-gray-100 rounded-full transition-colors"
+                >
+                  <svg className="w-6 h-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+              <div className="overflow-y-auto p-4">
               {filters.article_style.map((category: any) => (
                 <div key={category.cat_id} className="mb-4">
                   <h4 className="text-sm font-semibold text-[16px] text-black px-2 mb-2">
@@ -439,6 +451,7 @@ export default function ImageGeneratorOption({ onImageGenerated, onImagesGenerat
                   )}
                 </div>
               ))}
+              </div>
             </div>
           </div>
         )}
@@ -474,13 +487,24 @@ export default function ImageGeneratorOption({ onImageGenerated, onImagesGenerat
 
         {/* --- 🚀 START OF UI CHANGE --- */}
         {isStyleOpen && !(isLoading || isEnhancing) && filters?.orientations && (
-          <div 
-            ref={orientationModalRef} 
-            className="absolute max-w-[370px] pt-5 w-full left-[590px] top-[200px] mt-2 border border-gray-300 rounded-md bg-white shadow-lg z-10"
-          >
-            <h4 className="text-sm font-semibold text-[16px] text-black px-4 mb-2">Orientations</h4>
-            {/* Changed from flex-wrap to flex-col */}
-            <ul className="p-2 flex flex-col gap-1">
+          <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+            <div 
+              ref={orientationModalRef} 
+              className="bg-white rounded-xl w-full max-w-md max-h-[80vh] overflow-hidden flex flex-col shadow-2xl"
+            >
+              <div className="p-4 border-b flex justify-between items-center">
+                <h3 className="text-lg font-semibold text-gray-900">Select Orientation</h3>
+                <button 
+                  onClick={() => setIsStyleOpen(false)}
+                  className="p-1 hover:bg-gray-100 rounded-full transition-colors"
+                >
+                  <svg className="w-6 h-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+              <div className="overflow-y-auto p-4">
+                <ul className="flex flex-col gap-2">
               {filters.orientations.map((orientation: any) => (
                 <li 
                   key={orientation.orientation_id} 
@@ -508,7 +532,9 @@ export default function ImageGeneratorOption({ onImageGenerated, onImagesGenerat
                   <span className="text-sm text-gray-800">{orientation.name}</span>
                 </li>
               ))}
-            </ul>
+                </ul>
+              </div>
+            </div>
           </div>
         )}
         {/* --- 🚀 END OF UI CHANGE --- */}

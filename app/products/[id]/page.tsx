@@ -351,13 +351,13 @@ export default function ProductDetailPage() {
                 </div>
               )}
               
-              <button
+              {/* <button
                 type="button"
                 onClick={() => setIsModalOpen(true)}
                 className="absolute bottom-0 left-0 w-full bg-black/60 text-white text-center py-3 font-medium hover:bg-black/80 focus:outline-none focus:ring-0"
               >
                 Preview
-              </button>
+              </button> */}
             </div>
 
             {/* Modal */}
@@ -387,14 +387,11 @@ export default function ProductDetailPage() {
             )}
 
             {/* Generated Images or Article Styles */}
-            <div className="mt-4 mx-4">
+            {/* <div className="mt-4 mx-4">
                 <p className="text-sm font-medium text-gray-700 mb-2">
                 {(customizedData?.genrated_img?.length ?? 0) > 0 ? "Generated Variations" : "Article Styles"}
                 </p>
-              {/* FIX 3: Made grid responsive.
-                Was "grid-cols-4", now "grid-cols-3 sm:grid-cols-4".
-                This shows 3 items on mobile and 4 on larger screens.
-              */}
+             
               <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
                 {(customizedData?.genrated_img?.length ?? 0) > 0 ? (
                   // Show generated images
@@ -420,14 +417,12 @@ export default function ProductDetailPage() {
                         }}
                       />
                       
-                      {/* Selection indicator */}
                       {currentDisplayImage === imgUrl && (
                         <div className="absolute top-1 right-1 bg-blue-500 text-white rounded-full w-4 h-4 flex items-center justify-center text-xs font-bold">
                           ✓
                         </div>
                       )}
                       
-                      {/* Variation number */}
                       <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-xs p-1 rounded-b-md">
                         <p className="text-center">Variation {index + 1}</p>
                       </div>
@@ -478,14 +473,12 @@ export default function ProductDetailPage() {
                             </div>
                           )}
                           
-                          {/* Selection indicator */}
                           {isSelected && (
                             <div className="absolute top-1 right-1 bg-blue-500 text-white rounded-full w-4 h-4 flex items-center justify-center text-xs font-bold">
                               ✓
                             </div>
                           )}
                           
-                          {/* Category name overlay */}
                           <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-xs p-1 rounded-b-md">
                             <p className="truncate text-center">{style.cat_name}</p>
                           </div>
@@ -518,8 +511,7 @@ export default function ProductDetailPage() {
                   ))
                 )}
               </div>
-              
-              {/* Show selection info */}
+
               {(customizedData?.genrated_img?.length ?? 0) > 0 ? (
                 <div className="mt-2 text-xs text-gray-600">
                   <p>
@@ -548,7 +540,7 @@ export default function ProductDetailPage() {
                   </p>
                 </div>
               ) : null}
-            </div>
+            </div> */}
           </div>
 
           {/* Right Side - Product Info */}
@@ -779,7 +771,12 @@ export default function ProductDetailPage() {
                 {customizedData 
                   ? "Back to Original" 
                   : customizing 
-                  ? "Customizing..." 
+                  ? (
+                    <div className="flex items-center gap-2">
+                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                      <span>Customizing...</span>
+                    </div>
+                  )
                   : "Customize"}
               </button>
 
