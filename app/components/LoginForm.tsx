@@ -52,8 +52,10 @@ const LoginForm: React.FC<LoginFormProps> = ({
         res?.data?.user?.sess_id
       ) {
         const { user } = res.data;
+        setTimeout(() => {}, 5000);
         console.log(user);
         // Store in Zustand
+
         setAuth(user);
         onClose(); // close modal
         

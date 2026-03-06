@@ -71,13 +71,13 @@ export default function ProductPreview() {
                 height={600}
                 className="rounded-xl"
               />
-             <button
+             {/* <button
               type="button"
               onClick={() => setIsModalOpen(true)}
               className="absolute bottom-0 left-0 w-full bg-black/60 text-white text-center py-3 font-medium hover:bg-black/80 focus:outline-none focus:ring-0"
             >
               Preview
-            </button>
+            </button> */}
             </div>
 
 

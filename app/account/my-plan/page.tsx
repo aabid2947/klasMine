@@ -2,7 +2,7 @@
 import { useAuthStore } from "@/app/store/useAuthStore";
 import { postRequest } from "@/app/utils/api";
 import { useEffect, useState } from "react";
-
+// import {setIsCanPost} from "@/app/store/useAuthStore";
 type Plan = {
   subscription_plan_id: string;
   title: string;
@@ -17,6 +17,7 @@ type ActivePlan = {
 
 export default function MyPlan() {
   const user = useAuthStore((state) => state.user);
+  const setIsCanPost = useAuthStore((state) => state.setIsCanPost);
   const [plans, setPlans] = useState<Plan[]>([]);
   const [activePlan, setActivePlan] = useState<ActivePlan | null>(null);
   const [loading, setLoading] = useState(true);
@@ -45,6 +46,7 @@ export default function MyPlan() {
       const res = await postRequest("/billing/my-plan", payload);
       if (res.success && res.data?.active_plan_info) {
         setActivePlan(res.data.active_plan_info);
+        setIsCanPost(res.data.active_plan_info.is_can_post || 0);
       } else {
         setActivePlan(null);
         fetchAllPlans();

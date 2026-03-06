@@ -71,6 +71,7 @@ export default function ProductDetailPage() {
   const [filtersLoading, setFiltersLoading] = useState(true);
   const [customizing, setCustomizing] = useState(false);
   const [customizedData, setCustomizedData] = useState<CustomizeResponse | null>(null);
+  console.log(customizedData)
   const [currentDisplayImage, setCurrentDisplayImage] = useState<string>("");
   const [currentPrice, setCurrentPrice] = useState<string>("");
   const user = useAuthStore((s) => s.user);
@@ -387,7 +388,7 @@ export default function ProductDetailPage() {
             )}
 
             {/* Generated Images or Article Styles */}
-            {/* <div className="mt-4 mx-4">
+            <div className="mt-4 mx-4">
                 <p className="text-sm font-medium text-gray-700 mb-2">
                 {(customizedData?.genrated_img?.length ?? 0) > 0 ? "Generated Variations" : "Article Styles"}
                 </p>
@@ -428,7 +429,8 @@ export default function ProductDetailPage() {
                       </div>
                     </div>
                   ))
-                ) : filtersLoading ? (
+                ) :
+                 filtersLoading ? (
                   // Loading state
                   [1, 2, 3].map((i) => ( // Changed to 3 to match grid-cols-3
                     <div
@@ -436,7 +438,8 @@ export default function ProductDetailPage() {
                       className="w-full h-[80px] bg-gray-200 rounded-md animate-pulse"
                     />
                   ))
-                ) : articleStyles.length > 0 ? (
+                ) 
+                : articleStyles.length > 0 ? (
                   // Show article styles with subcategories
                   articleStyles
                     .slice(0, 4) // Limit to 4 items
@@ -485,31 +488,33 @@ export default function ProductDetailPage() {
                         </div>
                       );
                     })
-                ) : (
-                  // Fallback to product images when no article styles available
-                  [1, 2, 3].map((i) => ( // Changed to 3
-                    <div
-                      key={i}
-                      className={`w-full h-[80px] relative overflow-hidden border-2 rounded-md ${
-                        i === 1
-                          ? "border-blue-500"
-                          : "border-transparent cursor-pointer hover:border-gray-300"
-                      }`}
-                    >
-                      {product?.image_url ? (
-                        <img
-                          src={product.image_url}
-                          alt={`View ${i}`}
-                          className="w-full h-full object-cover rounded-md"
-                        />
-                      ) : (
-                        <div className="w-full h-full bg-gray-200 rounded-md flex items-center justify-center">
-                          <span className="text-gray-400 text-xs">{i}</span>
-                        </div>
-                      )}
-                    </div>
-                  ))
-                )}
+                ) : 
+                // (
+                //   // Fallback to product images when no article styles available
+                //   [1, 2, 3].map((i) => ( // Changed to 3
+                //     <div
+                //       key={i}
+                //       className={`w-full h-[80px] relative overflow-hidden border-2 rounded-md ${
+                //         i === 1
+                //           ? "border-blue-500"
+                //           : "border-transparent cursor-pointer hover:border-gray-300"
+                //       }`}
+                //     >
+                //       {product?.image_url ? (
+                //         <img
+                //           src={product.image_url}
+                //           alt={`View ${i}`}
+                //           className="w-full h-full object-cover rounded-md"
+                //         />
+                //       ) : (
+                //         <div className="w-full h-full bg-gray-200 rounded-md flex items-center justify-center">
+                //           <span className="text-gray-400 text-xs">{i}</span>
+                //         </div>
+                //       )}
+                //     </div>
+                //   ))
+                // )
+                null}
               </div>
 
               {(customizedData?.genrated_img?.length ?? 0) > 0 ? (
@@ -528,19 +533,21 @@ export default function ProductDetailPage() {
                     Reset to original
                   </button>
                 </div>
-              ) : !filtersLoading && articleStyles.length > 0 ? (
-                <div className="mt-2 text-xs text-gray-600">
-                  <p>
-                    Selected: <span className="font-medium">{articleStyles[selectedStyleIndex]?.cat_name}</span>
-                    {articleStyles[selectedStyleIndex]?.sub_cat?.length > 0 && (
-                      <span className="ml-2">
-                        ({articleStyles[selectedStyleIndex].sub_cat.length} variations)
-                      </span>
-                    )}
-                  </p>
-                </div>
-              ) : null}
-            </div> */}
+              ) :
+              //  !filtersLoading && articleStyles.length > 0 ? (
+              //   <div className="mt-2 text-xs text-gray-600">
+              //     <p>
+              //       Selected: <span className="font-medium">{articleStyles[selectedStyleIndex]?.cat_name}</span>
+              //       {articleStyles[selectedStyleIndex]?.sub_cat?.length > 0 && (
+              //         <span className="ml-2">
+              //           ({articleStyles[selectedStyleIndex].sub_cat.length} variations)
+              //         </span>
+              //       )}
+              //     </p>
+              //   </div>
+              // ) :
+               null}
+            </div>
           </div>
 
           {/* Right Side - Product Info */}

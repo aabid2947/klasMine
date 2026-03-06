@@ -48,7 +48,7 @@ export default function TextToImages({
   const [customizedImages, setCustomizedImages] = useState<string[]>([]);
   const [showCustomizedImages, setShowCustomizedImages] = useState(false);
   const [customizationResponse, setCustomizationResponse] = useState<any>(null);
- 
+
   // Debug: Log images when they change
   React.useEffect(() => {
     console.log("TextToImages received images:", {
@@ -145,10 +145,10 @@ export default function TextToImages({
 
       if (response?.success) {
         toast.success("Successfully added to cart!");
-        
+
         // Close the customize modal
         setIsCustomizeModalOpen(false);
-        
+
         // Clear all customization variables
         setIsCustomizationCompleted(false);
         setCustomizedImages([]);
@@ -170,6 +170,7 @@ export default function TextToImages({
   };
 
   const handleCustomizeFromModal = async () => {
+    setIsCustomizationCompleted(true);
     console.log("🔧 handleCustomizeFromModal called with:", {
       user: !!user,
       currentPostId,
@@ -236,6 +237,9 @@ export default function TextToImages({
     } catch (error) {
       console.error('Error calling customimage API:', error);
       toast.error("Failed to customize image. Please try again.");
+    }
+    finally {
+      setIsCustomizeModalOpen(false);
     }
   };
 
@@ -394,7 +398,7 @@ export default function TextToImages({
         <div className="relative mx-auto">
           <div
             className="mx-auto  w-full overflow-hidden rounded-md bg-gray-100"
-     
+
           >
             {Array.isArray(generatedImages) && generatedImages.length > 0 ? (
               <img
@@ -440,7 +444,7 @@ export default function TextToImages({
           </p>
 
           {/* Preview Button */}
-          {Array.isArray(generatedImages) && generatedImages.length > 0 && (
+          {/* {Array.isArray(generatedImages) && generatedImages.length > 0 && (
              <button
                           type="button"
                           onClick={() => {
@@ -450,7 +454,7 @@ export default function TextToImages({
                         >
                           Preview
                         </button>
-          )}
+          )} */}
         </div>
       </div>
 
@@ -466,8 +470,8 @@ export default function TextToImages({
               <div
                 key={index}
                 className={`relative w-full aspect-square max-w-[100px] overflow-hidden cursor-pointer border-2 rounded-md transition-all ${(selectedImage === image || (!selectedImage && index === 0))
-                    ? "border-blue-500 shadow-lg ring-1 ring-blue-200"
-                    : "border-gray-300 hover:border-gray-400 hover:shadow-md"
+                  ? "border-blue-500 shadow-lg ring-1 ring-blue-200"
+                  : "border-gray-300 hover:border-gray-400 hover:shadow-md"
                   }`}
                 onClick={() => {
                   console.log("Selected image:", image, "at index:", index);
@@ -520,38 +524,37 @@ export default function TextToImages({
       {/* Action Buttons */}
       <div className="flex gap-4 justify-center items-center p-3 mt-4">
         {/* Conditionally show Customize or Add to Cart button */}
-  
-          <button
-            onClick={() => {
-              console.log("🎨 Customize button clicked with:", {
-                generatedImages: generatedImages?.length,
-                currentPostId,
-                user: !!user
-              });
-
-              if (
-                !Array.isArray(generatedImages) ||
-                generatedImages.length === 0
-              ) {
-                console.error("❌ No generated images available");
-                toast.error("Please generate an image first");
-                return;
-              }
-              console.log("✅ Opening customize modal");
-              setIsCustomizeModalOpen(true);
-              fetchArticles(); // Fetch articles when opening customize modal
-            }}
-            disabled={!Array.isArray(generatedImages) || generatedImages.length === 0}
-            className={`px-6 py-3 font-semibold rounded-md shadow-lg transition ${!Array.isArray(generatedImages) || generatedImages.length === 0
-                ? "text-gray-400 bg-gray-300 cursor-not-allowed"
-                : "text-white bg-gradient-to-r from-purple-400 to-blue-500 hover:opacity-90"
-              }`}
-          >
-            Customize
-          </button>
-      
 
         <button
+          onClick={() => {
+            console.log("🎨 Customize button clicked with:", {
+              generatedImages: generatedImages?.length,
+              currentPostId,
+              user: !!user
+            });
+
+            if (
+              !Array.isArray(generatedImages) ||
+              generatedImages.length === 0
+            ) {
+              console.error("❌ No generated images available");
+              toast.error("Please generate an image first");
+              return;
+            }
+            console.log("✅ Opening customize modal");
+            setIsCustomizeModalOpen(true);
+            fetchArticles(); // Fetch articles when opening customize modal
+          }}
+          disabled={!Array.isArray(generatedImages) || generatedImages.length === 0}
+          className={`px-6 py-3 font-semibold rounded-md shadow-lg transition ${!Array.isArray(generatedImages) || generatedImages.length === 0
+            ? "text-gray-400 bg-gray-300 cursor-not-allowed"
+            : "text-white bg-gradient-to-r from-purple-400 to-blue-500 hover:opacity-90"
+            }`}
+        >
+          Customize
+        </button>
+
+        {user.is_can_post === 1 && (<button
           onClick={() => {
             if (
               !Array.isArray(generatedImages) ||
@@ -564,12 +567,13 @@ export default function TextToImages({
           }}
           disabled={!Array.isArray(generatedImages) || generatedImages.length === 0}
           className={`px-6 py-3 font-semibold border border-blue-500 rounded-md shadow-md transition ${!Array.isArray(generatedImages) || generatedImages.length === 0
-              ? "text-gray-400 border-gray-300 bg-gray-100 cursor-not-allowed"
-              : "text-blue-600 bg-white hover:bg-blue-50"
+            ? "text-gray-400 border-gray-300 bg-gray-100 cursor-not-allowed"
+            : "text-blue-600 bg-white hover:bg-blue-50"
             }`}
         >
           List marketplace
-        </button>
+        </button>)}
+
       </div>
 
       {/* Modal */}
@@ -742,8 +746,8 @@ export default function TextToImages({
                             type="button"
                             onClick={() => handleOrientationToggle(id)}
                             className={`flex items-center gap-2 px-2 sm:px-3 py-2 rounded-lg border transition-colors text-xs sm:text-sm ${checked
-                                ? "bg-indigo-50 border-indigo-400 ring-1 ring-indigo-200"
-                                : "bg-white border-gray-200 hover:bg-gray-50"
+                              ? "bg-indigo-50 border-indigo-400 ring-1 ring-indigo-200"
+                              : "bg-white border-gray-200 hover:bg-gray-50"
                               }`}
                           >
                             <input
@@ -796,8 +800,8 @@ export default function TextToImages({
                   onClick={handleSubmit}
                   disabled={saving}
                   className={`px-4 sm:px-8 py-2 sm:py-3 text-sm sm:text-base font-medium rounded-[6px] shadow-md transition ${saving
-                      ? "bg-gray-400 cursor-not-allowed text-white"
-                      : "bg-gradient-to-r from-[#6A5BFF] to-[#9F61FF] text-white hover:from-[#5a4cfb] hover:to-[#8f51fb]"
+                    ? "bg-gray-400 cursor-not-allowed text-white"
+                    : "bg-gradient-to-r from-[#6A5BFF] to-[#9F61FF] text-white hover:from-[#5a4cfb] hover:to-[#8f51fb]"
                     }`}
                 >
                   {saving ? "Saving..." : "Save"}
@@ -852,7 +856,7 @@ export default function TextToImages({
                           alt="Main Customized Image"
                           className="w-full h-full object-cover rounded-xl"
                         />
-                        <button
+                        {/* <button
                           type="button"
                           onClick={() => {
                             if (customizedImages[0]) {
@@ -862,7 +866,7 @@ export default function TextToImages({
                           className="absolute bottom-0 left-0 w-full bg-black/60 text-white text-center py-3 font-medium hover:bg-black/80 focus:outline-none focus:ring-0"
                         >
                           Preview
-                        </button>
+                        </button> */}
                       </div>
 
                       {/* Customized Images Thumbnail Tray */}
@@ -900,7 +904,7 @@ export default function TextToImages({
                       )}
 
                       {/* Customization Details */}
-                    
+
                     </div>
                   ) : (
                     // Show original preview
@@ -911,13 +915,13 @@ export default function TextToImages({
                           alt="Selected Frame"
                           className="w-full h-full object-cover rounded-xl"
                         />
-                        <button
+                        {/* <button
                           type="button"
                           onClick={() => setIsPreviewModalOpen(true)}
                           className="absolute bottom-0 left-0 w-full bg-black/60 text-white text-center py-3 font-medium hover:bg-black/80 focus:outline-none focus:ring-0"
                         >
                           Preview
-                        </button>
+                        </button> */}
                       </div>
 
                       {/* Thumbnail Images */}
@@ -946,49 +950,49 @@ export default function TextToImages({
                   <h2 className="text-2xl font-semibold leading-tight">
                     {selectedArticle ? `${selectedArticle.name} - ${selectedArticle.category_name}` : 'Black border with Flat lay of photo frame on textured surface'}
                   </h2>
-                    {customizationResponse && (
-                        <div className="mt-4  p-4 rounded-lg border border-green-200">
+                  {customizationResponse && (
+                    <div className="mt-4  p-4 rounded-lg border border-green-200">
 
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
-                            <div className="space-y-2">
-                              <div className="flex gap-2">
-                                <span className="text-gray-600 font-medium">Product Name:</span>
-                                <span className="text-gray-800">{customizationResponse.name || 'N/A'}</span>
-                              </div>
-                              <div className="flex gap-2">
-                                <span className="text-gray-600 font-medium">Category:</span>
-                                <span className="text-gray-800">{customizationResponse.category || 'N/A'}</span>
-                              </div>
-                              <div className="flex gap-2">
-                                <span className="text-gray-600 font-medium">Subcategory:</span>
-                                <span className="text-gray-800">{customizationResponse.subcategory || 'N/A'}</span>
-                              </div>
-                              {/* <div className="flex gap-2">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                        <div className="space-y-2">
+                          <div className="flex gap-2">
+                            <span className="text-gray-600 font-medium">Product Name:</span>
+                            <span className="text-gray-800">{customizationResponse.name || 'N/A'}</span>
+                          </div>
+                          <div className="flex gap-2">
+                            <span className="text-gray-600 font-medium">Category:</span>
+                            <span className="text-gray-800">{customizationResponse.category || 'N/A'}</span>
+                          </div>
+                          <div className="flex gap-2">
+                            <span className="text-gray-600 font-medium">Subcategory:</span>
+                            <span className="text-gray-800">{customizationResponse.subcategory || 'N/A'}</span>
+                          </div>
+                          {/* <div className="flex gap-2">
                                 <span className="text-gray-600 font-medium">Orientation:</span>
                                 <span className="text-gray-800">{customizationResponse.orgientation || 'N/A'}</span>
                               </div> */}
-                            <div className="flex gap-2">
-                              <span className="text-gray-600 font-medium">Description:</span>
-                              <p className="text-gray-800 mt-1">{customizationResponse.description}</p>
-                            </div>
-                            </div>
-                           
+                          <div className="flex gap-2">
+                            <span className="text-gray-600 font-medium">Description:</span>
+                            <p className="text-gray-800 mt-1">{customizationResponse.description}</p>
                           </div>
-                        
                         </div>
-                      )}
+
+                      </div>
+
+                    </div>
+                  )}
 
                   {/* Orientation */}
                   <div>
                     <p className="mb-2 font-medium">Orientation</p>
                     <div className="flex gap-2 flex-wrap">
-                      { ['1:1 Square', '2:3 Portrait', '3:4 Traditional', '4:3 Classic'].map((opt, i) => (
+                      {['1:1 Square', '2:3 Portrait', '3:4 Traditional', '4:3 Classic'].map((opt, i) => (
                         <button
                           key={i}
                           onClick={() => setSelectedOrientation(opt)}
                           className={`px-4 py-2 border rounded-md transition ${selectedOrientation === opt
-                              ? 'border-blue-500 text-blue-600 bg-blue-50'
-                              : 'border-gray-300 text-gray-600 hover:border-gray-400'
+                            ? 'border-blue-500 text-blue-600 bg-blue-50'
+                            : 'border-gray-300 text-gray-600 hover:border-gray-400'
                             }`}
                         >
                           {opt}
@@ -996,7 +1000,7 @@ export default function TextToImages({
                       ))}
                     </div>
                   </div>
-                
+
 
                   {/* Color */}
                   {/* <div>
@@ -1021,7 +1025,7 @@ export default function TextToImages({
                   </div> */}
 
                   {/* Article Selection */}
-                  {!customizationResponse &&<div>
+                  {!customizationResponse && <div>
                     <p className="mb-2 font-medium">Article Type</p>
                     <div className="space-y-3">
                       {/* Article Type Selector - This is already responsive with flex-wrap */}
@@ -1038,8 +1042,8 @@ export default function TextToImages({
                               }
                             }}
                             className={`px-4 py-2 border rounded-md transition ${selectedArticleType === articleType
-                                ? 'border-purple-500 text-purple-600 bg-purple-50'
-                                : 'border-gray-300 text-gray-600 hover:border-gray-400'
+                              ? 'border-purple-500 text-purple-600 bg-purple-50'
+                              : 'border-gray-300 text-gray-600 hover:border-gray-400'
                               }`}
                           >
                             {articleType}
@@ -1059,8 +1063,8 @@ export default function TextToImages({
                               key={article.article_id}
                               onClick={() => setSelectedArticle(article)}
                               className={`relative cursor-pointer border-2 rounded-md transition-all ${selectedArticle?.article_id === article.article_id
-                                  ? 'border-purple-500 ring-2 ring-purple-200 shadow-lg'
-                                  : 'border-transparent hover:border-purple-300'
+                                ? 'border-purple-500 ring-2 ring-purple-200 shadow-lg'
+                                : 'border-transparent hover:border-purple-300'
                                 }`}
                             >
                               <div className="aspect-[4/3] relative">
@@ -1102,8 +1106,8 @@ export default function TextToImages({
                         </div>
                       )}
                     </div>
-                  </div> }
-                  
+                  </div>}
+
 
                   {/* Price */}
                   <div className="text-green-600 font-bold text-xl">
@@ -1114,43 +1118,43 @@ export default function TextToImages({
                   <div className="space-y-4">
                     <div className="flex items-center gap-3">
 
-                       
-          
+
+
 
                       {showCustomizedImages ? (
                         // Show Add to Cart and Apply buttons after customization
                         <>
-                    <div className="flex items-center border rounded overflow-hidden">
-                         <button
-                          onClick={() => setQuantity(q => Math.max(1, q - 1))}
-                          className="px-3 py-2 bg-gray-100 hover:bg-gray-200 transition"
-                        >
-                          -
-                        </button>
-                        <input
-                          type="text"
-                          readOnly
-                          value={quantity.toString().padStart(2, '0')}
-                          className="w-12 text-center py-2 border-0 focus:outline-none"
-                        />
-                        <button
-                          onClick={() => setQuantity(q => q + 1)}
-                          className="px-3 py-2 bg-gray-100 hover:bg-gray-200 transition"
-                        >
-                          +
-                        </button>
-                        </div>
+                          <div className="flex items-center border rounded overflow-hidden">
+                            <button
+                              onClick={() => setQuantity(q => Math.max(1, q - 1))}
+                              className="px-3 py-2 bg-gray-100 hover:bg-gray-200 transition"
+                            >
+                              -
+                            </button>
+                            <input
+                              type="text"
+                              readOnly
+                              value={quantity.toString().padStart(2, '0')}
+                              className="w-12 text-center py-2 border-0 focus:outline-none"
+                            />
+                            <button
+                              onClick={() => setQuantity(q => q + 1)}
+                              className="px-3 py-2 bg-gray-100 hover:bg-gray-200 transition"
+                            >
+                              +
+                            </button>
+                          </div>
                           <button
                             onClick={handleAddToCart}
                             disabled={!currentPostId || !user}
                             className={`px-6 py-2 rounded-md shadow transition ${!currentPostId || !user
-                                ? "text-gray-400 bg-gray-300 cursor-not-allowed"
-                                : "text-white bg-green-600 hover:bg-green-700"
+                              ? "text-gray-400 bg-gray-300 cursor-not-allowed"
+                              : "text-white bg-green-600 hover:bg-green-700"
                               }`}
                           >
                             Add to Cart
                           </button>
-                        
+
                         </>
                       ) : (
                         // Show Customize button before customization
@@ -1158,7 +1162,11 @@ export default function TextToImages({
                           onClick={handleCustomizeFromModal}
                           className="bg-gradient-to-r from-purple-500 to-indigo-500 text-white px-6 py-2 rounded-md shadow hover:opacity-90 transition"
                         >
-                          Customize
+                          {isCustomizationCompleted ? (<div className="flex items-center gap-2">
+                            <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                            <span>Customizing...</span>
+                          </div>) : 
+                          "Customize"}
                         </button>
                       )}
                     </div>

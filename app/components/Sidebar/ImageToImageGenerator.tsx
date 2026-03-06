@@ -287,19 +287,15 @@ export default function ImageToImageGenerator({
       // Number of images from slider
       formData.append("noofimg", value.toString());
 
-      console.log("Sending request to:", `${process.env.NEXT_PUBLIC_API_URL}/prompt/image/edits`);
+      console.log("Sending request to:", `/api/proxy-upload?endpoint=/prompt/image/edits`);
       console.log("Number of images to generate:", value);
       console.log("FormData contents:");
       for (let [key, value] of formData.entries()) {
         console.log(key, ':', value);
       }
 
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/prompt/image/edits`, {
+      const response = await fetch(`/api/proxy-upload?endpoint=/prompt/image/edits`, {
         method: "POST",
-        headers: {
-          "x-user-id": user.user_id,
-          "x-session-id": user.sess_id,
-        },
         body: formData,
       });
 

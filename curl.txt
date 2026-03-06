@@ -5,7 +5,7 @@
     "latitude": "28.6139",
     "longitude": "77.2090",
     "name": "John ",
-    "email": "test12@gmail.com",
+    "email": "test1233@gmail.com",
     "password": "123456",
     "confirm_password": "123456"
 }'
@@ -16,7 +16,7 @@ curl -X POST 'https://api.klassart.com/rest/api/account/login-validate' -H 'Cont
     "app_version": "1.0.5",
     "latitude": "28.6139",
     "longitude": "77.2090",
-    "email": "test123@gmail.com",
+    "email": "test1233@gmail.com",
     "password": "123456"
 }'
  

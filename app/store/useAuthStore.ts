@@ -18,12 +18,14 @@ export interface User {
     state_code?: string;
     country?: string;
   };
+  is_can_post?: number;
 }
 
 interface AuthState {
   user: User | null;
   setAuth: (user: User) => void;
   clearAuth: () => void;
+  setIsCanPost: (is_can_post: number) => void;
 }
 
 export const useAuthStore = create<AuthState>((set) => ({
@@ -36,6 +38,19 @@ export const useAuthStore = create<AuthState>((set) => ({
 
     // store complete user in state
     set({ user });
+  },
+  setIsCanPost: (is_can_post: number) => {
+    set((state) => {
+      if (state.user) {
+        return {
+          user: {
+            ...state.user,
+            is_can_post,
+          },
+        };
+      }
+      return state;
+    });
   },
 
   clearAuth: () => {

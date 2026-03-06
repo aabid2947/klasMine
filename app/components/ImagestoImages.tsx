@@ -146,6 +146,7 @@ export default function ImagesToImages({
 
 
   const handleCustomizeFromModal = async () => {
+    setIsCustomizationCompleted(true);
     if (!user) {
       toast.error("Please login to customize images");
       return;
@@ -204,6 +205,9 @@ export default function ImagesToImages({
       console.error('Error calling customimage API:', error);
       toast.error("Failed to customize image. Please try again.");
     }
+    finally {
+      setIsCustomizeModalOpen(false);
+    }
   };
 
   const handleApplyCustomizedImages = () => {
@@ -211,6 +215,7 @@ export default function ImagesToImages({
     setIsCustomizeModalOpen(false);
     // Images will be updated via the parent component
   };
+  console.log(user)
   const fetchFilters = async () => {
     try {
       const payload = {
@@ -270,7 +275,7 @@ export default function ImagesToImages({
         longitude: "77.2090",
         user_id: user!.user_id,
         sess_id: user!.sess_id,
-        post_id: 0,
+        post_id: currentPostId,
         article_category_id: formData.category,
         sub_category_id: formData.subcategory,
         name: formData.productName,
@@ -348,10 +353,10 @@ export default function ImagesToImages({
 
       if (response?.success) {
         toast.success("Successfully added to cart!");
-        
+
         // Close the customize modal
         setIsCustomizeModalOpen(false);
-        
+
         // Clear all customization variables
         setIsCustomizationCompleted(false);
         setCustomizedImages([]);
@@ -483,7 +488,7 @@ export default function ImagesToImages({
                 }`
                 : "Generated image will appear here"}
             </p>
-            {Array.isArray(generatedImages) && generatedImages.length > 0 && (
+            {/* {Array.isArray(generatedImages) && generatedImages.length > 0 && (
               <button
                 type="button"
                 onClick={() => setIsPreviewModalOpen(true)}
@@ -491,7 +496,7 @@ export default function ImagesToImages({
               >
                 Preview
               </button>
-            )}
+            )} */}
           </div>
         </div>
         {/* Modal */}
@@ -801,7 +806,7 @@ export default function ImagesToImages({
         </button>
 
         {/* List market place button */}
-        <button
+        {user.is_can_post && <button
           onClick={() => {
             if (
               !Array.isArray(generatedImages) ||
@@ -819,7 +824,8 @@ export default function ImagesToImages({
             }`}
         >
           List market place
-        </button>
+        </button>}
+
       </div>
 
       {/* Customize Modal */}
@@ -828,17 +834,17 @@ export default function ImagesToImages({
           <div className="bg-gray-100 rounded-xl w-[90vw] h-[90vh] relative overflow-hidden shadow-2xl">
             {/* Close Button */}
             <button
-                  onClick={() => {
-                    setIsCustomizeModalOpen(false);
-                    // Clear customization state
-                    setShowCustomizedImages(false);
-                    setCustomizationResponse(null);
-                  }}
-                  className="absolute top-5 right-7 text-black text-2xl hover:text-gray-600 z-50"
-                  aria-label="Close"
-                >
-                  ✕
-                </button>
+              onClick={() => {
+                setIsCustomizeModalOpen(false);
+                // Clear customization state
+                setShowCustomizedImages(false);
+                setCustomizationResponse(null);
+              }}
+              className="absolute top-5 right-7 text-black text-2xl hover:text-gray-600 z-50"
+              aria-label="Close"
+            >
+              ✕
+            </button>
 
             {/* Modal Content */}
             <div className="w-full h-full p-8 overflow-y-auto">
@@ -858,7 +864,7 @@ export default function ImagesToImages({
                           alt="Main Customized Image"
                           className="w-full h-full object-cover rounded-xl"
                         />
-                        <button
+                        {/* <button
                           type="button"
                           onClick={() => {
                             if (customizedImages[0]) {
@@ -868,7 +874,7 @@ export default function ImagesToImages({
                           className="absolute bottom-0 left-0 w-full bg-black/60 text-white text-center py-3 font-medium hover:bg-black/80 focus:outline-none focus:ring-0"
                         >
                           Preview
-                        </button>
+                        </button> */}
                       </div>
 
                       {/* Customized Images Thumbnail Tray */}
@@ -914,7 +920,7 @@ export default function ImagesToImages({
                           alt="Selected Frame"
                           className="w-full h-full object-cover rounded-xl"
                         />
-                        <button
+                        {/* <button
                           type="button"
                           onClick={() => {
                             const imageUrl = selectedImage || (generatedImages && generatedImages[0]);
@@ -925,7 +931,7 @@ export default function ImagesToImages({
                           className="absolute bottom-0 left-0 w-full bg-black/60 text-white text-center py-3 font-medium hover:bg-black/80 focus:outline-none focus:ring-0"
                         >
                           Preview
-                        </button>
+                        </button> */}
                       </div>
 
                       {/* Thumbnail Images */}
@@ -954,7 +960,7 @@ export default function ImagesToImages({
                   <h2 className="text-2xl font-semibold leading-tight">
                     {selectedArticle ? `${selectedArticle.name} - ${selectedArticle.category_name}` : 'Black border with Flat lay of photo frame on textured surface'}
                   </h2>
-                  
+
                   {customizationResponse && (
                     <div className="mt-4 p-4 rounded-lg border border-green-200">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
@@ -1091,36 +1097,36 @@ export default function ImagesToImages({
                   {/* Quantity & Actions */}
                   <div className="space-y-4">
                     <div className="flex items-center gap-3">
-                     
+
                     </div>
 
                     {showCustomizedImages ? (
                       // Show Add to Cart and Apply buttons after customization
                       <div className="flex gap-3">
-                         <div className="flex items-center border rounded overflow-hidden">
-                        <button
-                          onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                          className="px-3 py-2 bg-gray-100 hover:bg-gray-200"
-                        >
-                          -
-                        </button>
-                        <input
-                          type="text"
-                          readOnly
-                          value={quantity.toString().padStart(2, '0')}
-                          className="w-12 text-center py-2 border-0 focus:outline-none"
-                        />
-                        <button
-                          onClick={() => setQuantity(quantity + 1)}
-                          className="px-3 py-2 bg-gray-100 hover:bg-gray-200"
-                        >
-                          +
-                        </button>
-                      </div>
+                        <div className="flex items-center border rounded overflow-hidden">
+                          <button
+                            onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                            className="px-3 py-2 bg-gray-100 hover:bg-gray-200"
+                          >
+                            -
+                          </button>
+                          <input
+                            type="text"
+                            readOnly
+                            value={quantity.toString().padStart(2, '0')}
+                            className="w-12 text-center py-2 border-0 focus:outline-none"
+                          />
+                          <button
+                            onClick={() => setQuantity(quantity + 1)}
+                            className="px-3 py-2 bg-gray-100 hover:bg-gray-200"
+                          >
+                            +
+                          </button>
+                        </div>
                         <button
                           onClick={handleAddToCart}
                           disabled={!currentPostId || !user}
-                          className={` py-3 font-semibold border rounded-md shadow-md transition ${!currentPostId || !user
+                          className={` p-3 font-semibold border rounded-md shadow-md transition ${!currentPostId || !user
                             ? "text-gray-400 border-gray-300 bg-gray-100 cursor-not-allowed"
                             : "text-white bg-green-600 border-green-600 hover:bg-green-700"
                             }`}
@@ -1138,7 +1144,10 @@ export default function ImagesToImages({
                           : "text-white bg-gradient-to-r from-purple-400 to-blue-500 hover:opacity-90"
                           }`}
                       >
-                        Customize
+                        {isCustomizationCompleted ? (<div className="flex items-center gap-2">
+                          <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                          <span>Customizing...</span>
+                        </div>) : "Customize"}
                       </button>
                     )}
                   </div>

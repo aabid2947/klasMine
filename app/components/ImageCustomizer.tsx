@@ -159,12 +159,12 @@ export default function ImageCustomizer({
               )}
             </div>
             
-            <button
+            {/* <button
               onClick={() => setIsPreviewModalOpen(true)}
               className="absolute bottom-0 left-0 w-full bg-black/60 text-white text-center py-2 text-sm font-medium hover:bg-black/80 focus:outline-none focus:ring-0"
             >
               Preview Full Size
-            </button>
+            </button> */}
           </div>
         </div>
 
